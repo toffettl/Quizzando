@@ -1,0 +1,6 @@
+@Quizzando_HostAddress = http://localhost:5151
+
+GET {{Quizzando_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
