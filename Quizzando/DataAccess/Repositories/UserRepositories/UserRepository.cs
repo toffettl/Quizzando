@@ -24,5 +24,10 @@ namespace Quizzando.DataAccess.Repositories.UserRepositories
         {
             return await _dbContext.User.FirstAsync(user => user.Id == id);
         }
+
+        public async Task<List<User>> GetAllUsers()
+        {
+            return await _dbContext.User.AsNoTracking().ToListAsync();
+        }
     }
 }

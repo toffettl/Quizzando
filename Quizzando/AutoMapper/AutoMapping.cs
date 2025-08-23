@@ -21,6 +21,7 @@ namespace Quizzando.AutoMapper
         {
             CreateMap<User, UserRegisterResponse>();
             CreateMap<User, UserGetByIdResponse>();
+            CreateMap<User, UserGetAllResponse>();
         }
 
 
