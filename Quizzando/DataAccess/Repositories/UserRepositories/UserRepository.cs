@@ -29,5 +29,19 @@ namespace Quizzando.DataAccess.Repositories.UserRepositories
         {
             return await _dbContext.User.AsNoTracking().ToListAsync();
         }
+
+        public async Task<bool?> Delete(Guid id)
+        {
+            var result = await _dbContext.User.FirstOrDefaultAsync(user => user.Id == id);
+
+            if (result == null)
+            {
+                return false;
+            }
+
+            _dbContext.User.Remove(result);
+
+            return true;
+        }
     }
 }
