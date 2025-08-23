@@ -98,5 +98,11 @@ namespace Quizzando.Exception {
                 return ResourceManager.GetString("NAME_TOO_SHORT", resourceCulture);
             }
         }
+        
+        public static string COURSE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("COURSE_NOT_FOUND", resourceCulture);
+            }
+        }
     }
 }

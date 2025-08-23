@@ -144,4 +144,7 @@
   <data name="NAME_TOO_SHORT" xml:space="preserve">
     <value>Name is too short</value>
   </data>
+  <data name="COURSE_NOT_FOUND" xml:space="preserve">
+    <value>Course not found</value>
+  </data>
 </root>
