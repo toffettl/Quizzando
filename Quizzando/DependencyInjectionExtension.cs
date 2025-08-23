@@ -3,7 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Quizzando.AutoMapper;
 using Quizzando.DataAccess;
 using Quizzando.DataAccess.Repositories;
+using Quizzando.DataAccess.Repositories.DisciplineRepositories;
+using Quizzando.DataAccess.Repositories.DisciplineRepository;
 using Quizzando.DataAccess.Repositories.UserRepositories;
+using Quizzando.UseCases.Disciplines.Create;
 using Quizzando.UseCases.Users.GetById;
 using Quizzando.UseCases.Users.Register;
 
@@ -30,6 +33,7 @@ namespace Quizzando
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
+            services.AddScoped<IDisciplineWriteOnlyRepository, DisciplineRepository>();
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
@@ -44,6 +48,7 @@ namespace Quizzando
         {
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
             services.AddScoped<IGetUserByIdUseCase, GetUserByIdUseCase>();
+            services.AddScoped<ICreateDisciplineUseCase, CreateDisciplineUseCase>();
         } 
     }
 }
