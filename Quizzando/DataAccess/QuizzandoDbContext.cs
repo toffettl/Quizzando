@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Quizzando.Models;
 
 namespace Quizzando.DataAccess
 {
@@ -9,6 +10,6 @@ namespace Quizzando.DataAccess
         {
         }
 
-
+        public DbSet<User> User {  get; set; }
     }
 }

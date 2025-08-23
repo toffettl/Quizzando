@@ -1,15 +1,25 @@
+using Quizzando;
+using Quizzando.AutoMapper;
+using Quizzando.DataAccess;
+using Quizzando.Exception.Filters;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Configuration["ConnectionStrings:DefaultConnetion"] = Environment.GetEnvironmentVariable("DEFAULT_CONNETION");
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
+
+builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddAutoMapper(typeof(AutoMapping));
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
