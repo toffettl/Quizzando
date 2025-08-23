@@ -20,6 +20,9 @@ namespace Quizzando.AutoMapper
         private void ResponseToEntity()
         {
             CreateMap<User, UserRegisterResponse>();
+            CreateMap<User, UserGetByIdResponse>();
         }
+
+
     }
 }

@@ -4,6 +4,7 @@ using Quizzando.AutoMapper;
 using Quizzando.DataAccess;
 using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.UserRepositories;
+using Quizzando.UseCases.Users.GetById;
 using Quizzando.UseCases.Users.Register;
 
 namespace Quizzando
@@ -42,6 +43,7 @@ namespace Quizzando
         private static void AddUseCases(this IServiceCollection services)
         {
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
+            services.AddScoped<IGetUserByIdUseCase, GetUserByIdUseCase>();
         } 
     }
 }

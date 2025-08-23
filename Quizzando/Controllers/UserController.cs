@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Quizzando.Communication.Requests.User;
 using Quizzando.Communication.Responses;
 using Quizzando.Communication.Responses.User;
+using Quizzando.UseCases.Users.GetById;
 using Quizzando.UseCases.Users.Register;
 
 namespace Quizzando.Controllers
@@ -19,6 +20,18 @@ namespace Quizzando.Controllers
             [FromBody] UserRegisterRequest request)
         {
             var response = await useCase.Execute(request);
+
+            return Ok(response);
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(UserGetByIdResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetById(
+            [FromServices] IGetUserByIdUseCase useCase,
+            [FromRoute] Guid id)
+        {
+            var response = await useCase.Execute(id);
 
             return Ok(response);
         }

@@ -122,5 +122,14 @@ namespace Quizzando.Exception {
                 return ResourceManager.GetString("UNKNOWM_ERROR", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a User not found.
+        /// </summary>
+        public static string USER_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("USER_NOT_FOUND", resourceCulture);
+            }
+        }
     }
 }

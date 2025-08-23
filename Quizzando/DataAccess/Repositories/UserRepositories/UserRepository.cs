@@ -19,5 +19,10 @@ namespace Quizzando.DataAccess.Repositories.UserRepositories
         {
             return await _dbContext.User.AnyAsync(user => user.Email!.Equals(email));
         }
+
+        public async Task<User> GetUserById(Guid id)
+        {
+            return await _dbContext.User.FirstAsync(user => user.Id == id);
+        }
     }
 }
