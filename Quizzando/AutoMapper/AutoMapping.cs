@@ -18,6 +18,7 @@ namespace Quizzando.AutoMapper
         {
             CreateMap<UserRegisterRequest, User>();
             CreateMap<CreateCourseRequest, Course>();
+            CreateMap<UpdateCourseRequest, Course>();
         }
 
         private void ResponseToEntity()
@@ -27,6 +28,7 @@ namespace Quizzando.AutoMapper
             CreateMap<Course, CreateCourseResponse>();
             CreateMap<Course, GetCourseByIdResponse>();
             CreateMap<Course, GetAllCoursesResponse>();
+            CreateMap<Course, UpdateCourseResponse>();
         }
 
 

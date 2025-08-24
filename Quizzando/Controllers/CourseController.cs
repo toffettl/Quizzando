@@ -5,6 +5,7 @@ using Quizzando.Communication.Responses.Course;
 using Quizzando.UseCases.Courses.Create;
 using Quizzando.UseCases.Courses.GetAll;
 using Quizzando.UseCases.Courses.GetById;
+using Quizzando.UseCases.Courses.Update;
 
 namespace Quizzando.Controllers
 {
@@ -47,6 +48,21 @@ namespace Quizzando.Controllers
             [FromServices] IGetAllCoursesUseCase useCase)
         {
             var response = await useCase.Execute();
+            
+            return Ok(response);
+        }
+
+
+        [HttpPut("{id}")]
+        [ProducesResponseType(typeof(UpdateCourseResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UpdateCourse(
+            [FromServices] IUpdateCourseUseCase useCase,
+            [FromRoute] Guid id,
+            [FromBody] UpdateCourseRequest request
+        )
+        {
+            var response = await useCase.Execute(id, request);
             
             return Ok(response);
         }

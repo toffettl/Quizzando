@@ -17,6 +17,11 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
             await _dbContext.Course.AddAsync(course);
         }
 
+        public async Task Update(Course course)
+        {
+            _dbContext.Course.Update(course);
+        }
+
         public async Task<Course> GetCourseById(Guid id)
         {
             return await _dbContext.Course.FirstAsync(course => course.Id == id); 
