@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Quizzando.Communication.Requests.Course;
 using Quizzando.Communication.Responses;
 using Quizzando.Communication.Responses.Course;
-using Quizzando.Models;
 using Quizzando.UseCases.Courses.Create;
+using Quizzando.UseCases.Courses.GetAll;
 using Quizzando.UseCases.Courses.GetById;
 
 namespace Quizzando.Controllers
@@ -35,6 +35,18 @@ namespace Quizzando.Controllers
         )
         {
             var response = await useCase.Execute(id);
+            
+            return Ok(response);
+        }
+        
+        
+        [HttpGet()]
+        [ProducesResponseType(typeof(GetAllCoursesResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetAll(
+            [FromServices] IGetAllCoursesUseCase useCase)
+        {
+            var response = await useCase.Execute();
             
             return Ok(response);
         }

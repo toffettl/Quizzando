@@ -6,6 +6,7 @@ using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.CourseRepositories;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.UseCases.Courses.Create;
+using Quizzando.UseCases.Courses.GetAll;
 using Quizzando.UseCases.Courses.GetById;
 using Quizzando.UseCases.Users.GetById;
 using Quizzando.UseCases.Users.Register;
@@ -51,6 +52,8 @@ namespace Quizzando
             services.AddScoped<IGetUserByIdUseCase, GetUserByIdUseCase>();
             services.AddScoped<ICreateCourseUseCase, CreateCourseUseCase>();
             services.AddScoped<IGetCourseByIdUseCase, GetCourseByIdUseCase>();
+            services.AddScoped<IGetAllCoursesUseCase,  GetAllCoursesUseCase>();
+
         } 
     }
 }
