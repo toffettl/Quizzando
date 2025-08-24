@@ -6,5 +6,6 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
     {
         Task Add(Course course);
         Task Update(Course course);
+        Task Delete(Course course);
     }
 }

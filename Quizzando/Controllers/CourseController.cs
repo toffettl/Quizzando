@@ -3,6 +3,7 @@ using Quizzando.Communication.Requests.Course;
 using Quizzando.Communication.Responses;
 using Quizzando.Communication.Responses.Course;
 using Quizzando.UseCases.Courses.Create;
+using Quizzando.UseCases.Courses.Delete;
 using Quizzando.UseCases.Courses.GetAll;
 using Quizzando.UseCases.Courses.GetById;
 using Quizzando.UseCases.Courses.Update;
@@ -65,6 +66,17 @@ namespace Quizzando.Controllers
             var response = await useCase.Execute(id, request);
             
             return Ok(response);
+        }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> DeleteCourse(
+            [FromServices] IDeleteCourseUseCase useCase,
+            [FromRoute] Guid id)
+        {
+            await useCase.Execute(id);
+            return NoContent();
         }
     }
 }

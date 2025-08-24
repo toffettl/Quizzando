@@ -6,6 +6,7 @@ using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.CourseRepositories;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.UseCases.Courses.Create;
+using Quizzando.UseCases.Courses.Delete;
 using Quizzando.UseCases.Courses.GetAll;
 using Quizzando.UseCases.Courses.GetById;
 using Quizzando.UseCases.Courses.Update;
@@ -55,6 +56,7 @@ namespace Quizzando
             services.AddScoped<IGetCourseByIdUseCase, GetCourseByIdUseCase>();
             services.AddScoped<IGetAllCoursesUseCase,  GetAllCoursesUseCase>();
             services.AddScoped<IUpdateCourseUseCase, UpdateCourseUseCase>();
+            services.AddScoped<IDeleteCourseUseCase, DeleteCourseUseCase>();
         } 
     }
 }

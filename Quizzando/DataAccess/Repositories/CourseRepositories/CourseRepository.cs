@@ -22,6 +22,11 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
             _dbContext.Course.Update(course);
         }
 
+        public async Task Delete(Course course)
+        {
+            _dbContext.Course.Remove(course);
+        }
+
         public async Task<Course> GetCourseById(Guid id)
         {
             return await _dbContext.Course.FirstAsync(course => course.Id == id); 
