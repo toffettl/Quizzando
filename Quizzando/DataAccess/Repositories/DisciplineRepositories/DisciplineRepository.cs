@@ -19,9 +19,14 @@ namespace Quizzando.DataAccess.Repositories.DisciplineRepositories
             await _dbContext.Discipline.AddAsync(discipline);
         }
 
+        public async Task<List<Discipline>> GetAll()
+        {
+            return await _dbContext.Discipline.AsNoTracking().ToListAsync();
+        }
+
         public async Task<Discipline?> GetById(Guid id)
         {
-            return await _dbContext.Discipline.FirstAsync(discipline => discipline.Id == id);
+            return await _dbContext.Discipline.AsNoTracking().FirstOrDefaultAsync(user => user.Id == id);
         }
     }
 }
