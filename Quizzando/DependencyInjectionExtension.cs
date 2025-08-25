@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Quizzando.AutoMapper;
 using Quizzando.DataAccess;
 using Quizzando.DataAccess.Repositories;
@@ -34,6 +33,7 @@ namespace Quizzando
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
             services.AddScoped<IDisciplineWriteOnlyRepository, DisciplineRepository>();
+            services.AddScoped<IDisciplineReadOnlyRepository, DisciplineRepository>();
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
