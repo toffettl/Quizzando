@@ -6,6 +6,8 @@ using Quizzando.DataAccess.Repositories.DisciplineRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepository;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.UseCases.Disciplines.Create;
+using Quizzando.UseCases.Disciplines.GetAll;
+using Quizzando.UseCases.Disciplines.GetById;
 using Quizzando.UseCases.Users.GetById;
 using Quizzando.UseCases.Users.Register;
 
@@ -49,6 +51,8 @@ namespace Quizzando
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
             services.AddScoped<IGetUserByIdUseCase, GetUserByIdUseCase>();
             services.AddScoped<ICreateDisciplineUseCase, CreateDisciplineUseCase>();
+            services.AddScoped<IGetAllDisciplinesUseCase, GetAllDisciplinesUseCase>();
+            services.AddScoped<IGetDisciplineByIdUseCase, GetDisciplineByIdUseCase>();
         } 
     }
 }
