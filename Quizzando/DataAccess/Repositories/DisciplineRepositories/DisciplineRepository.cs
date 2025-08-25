@@ -1,9 +1,10 @@
-﻿using Quizzando.DataAccess.Repositories.DisciplineRepository;
+﻿using Microsoft.EntityFrameworkCore;
+using Quizzando.DataAccess.Repositories.DisciplineRepository;
 using Quizzando.Models;
 
 namespace Quizzando.DataAccess.Repositories.DisciplineRepositories
 {
-    public class DisciplineRepository : IDisciplineWriteOnlyRepository  
+    public class DisciplineRepository : IDisciplineWriteOnlyRepository, IDisciplineReadOnlyRepository  
     {
         private readonly QuizzandoDbContext _dbContext;
 
@@ -16,6 +17,11 @@ namespace Quizzando.DataAccess.Repositories.DisciplineRepositories
         public async Task Add(Discipline discipline)
         {
             await _dbContext.Discipline.AddAsync(discipline);
+        }
+
+        public async Task<Discipline?> GetById(Guid id)
+        {
+            return await _dbContext.Discipline.FirstAsync(discipline => discipline.Id == id);
         }
     }
 }
