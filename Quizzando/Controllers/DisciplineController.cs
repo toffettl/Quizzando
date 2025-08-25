@@ -3,6 +3,7 @@ using Quizzando.Communication.Requests.Disciplines;
 using Quizzando.Communication.Responses;
 using Quizzando.Communication.Responses.Disciplines;
 using Quizzando.UseCases.Disciplines.Create;
+using Quizzando.UseCases.Disciplines.Delete;
 using Quizzando.UseCases.Disciplines.GetAll;
 using Quizzando.UseCases.Disciplines.GetById;
 using Quizzando.UseCases.Disciplines.Update;
@@ -67,5 +68,16 @@ namespace Quizzando.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Delete(
+            [FromServices] IDeleteDisciplineUseCase useCase,
+            [FromRoute] Guid id)
+        {
+            await useCase.Execute(id);
+
+            return NoContent();
+        }
     }
 }
