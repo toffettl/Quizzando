@@ -5,6 +5,7 @@ using Quizzando.Communication.Responses.Disciplines;
 using Quizzando.UseCases.Disciplines.Create;
 using Quizzando.UseCases.Disciplines.GetAll;
 using Quizzando.UseCases.Disciplines.GetById;
+using Quizzando.UseCases.Disciplines.Update;
 
 namespace Quizzando.Controllers
 {
@@ -51,5 +52,20 @@ namespace Quizzando.Controllers
 
             return Ok(response);
         }
+
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Update(
+            [FromServices] IUpdateDisciplineUseCase useCase,
+            [FromRoute] Guid id,
+            [FromBody] DisciplineRequest request)
+        {
+            await useCase.Execute(id, request);
+
+            return NoContent();
+        }
+
     }
 }
