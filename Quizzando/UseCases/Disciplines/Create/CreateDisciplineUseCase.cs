@@ -30,9 +30,6 @@ namespace Quizzando.UseCases.Disciplines.Create
 
             var discipline = _mapper.Map<Discipline>(request);
 
-            discipline.CreatedAt = DateTime.UtcNow;
-            discipline.UpdatedAt = DateTime.UtcNow;
-
             await _disciplineWriteOnlyRepository.Add(discipline);
 
             await _unitOfWork.Commit();
