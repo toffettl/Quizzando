@@ -70,6 +70,15 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Discipline not found.
+        /// </summary>
+        public static string DISCIPLINE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("DISCIPLINE_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Email already registered.
         /// </summary>
         public static string EMAIL_ALREADY_REGISTERED {
