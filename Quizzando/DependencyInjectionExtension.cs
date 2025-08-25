@@ -8,6 +8,7 @@ using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.UseCases.Disciplines.Create;
 using Quizzando.UseCases.Disciplines.GetAll;
 using Quizzando.UseCases.Disciplines.GetById;
+using Quizzando.UseCases.Disciplines.Update;
 using Quizzando.UseCases.Users.GetById;
 using Quizzando.UseCases.Users.Register;
 
@@ -36,6 +37,7 @@ namespace Quizzando
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
             services.AddScoped<IDisciplineWriteOnlyRepository, DisciplineRepository>();
             services.AddScoped<IDisciplineReadOnlyRepository, DisciplineRepository>();
+            services.AddScoped<IDisciplineUpdateOnlyRepository, DisciplineRepository>();
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
@@ -53,6 +55,7 @@ namespace Quizzando
             services.AddScoped<ICreateDisciplineUseCase, CreateDisciplineUseCase>();
             services.AddScoped<IGetAllDisciplinesUseCase, GetAllDisciplinesUseCase>();
             services.AddScoped<IGetDisciplineByIdUseCase, GetDisciplineByIdUseCase>();
+            services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
         } 
     }
 }
