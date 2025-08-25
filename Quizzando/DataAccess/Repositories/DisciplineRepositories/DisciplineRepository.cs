@@ -4,7 +4,7 @@ using Quizzando.Models;
 
 namespace Quizzando.DataAccess.Repositories.DisciplineRepositories
 {
-    public class DisciplineRepository : IDisciplineWriteOnlyRepository, IDisciplineReadOnlyRepository  
+    public class DisciplineRepository : IDisciplineWriteOnlyRepository, IDisciplineReadOnlyRepository, IDisciplineUpdateOnlyRepository
     {
         private readonly QuizzandoDbContext _dbContext;
 
@@ -27,6 +27,11 @@ namespace Quizzando.DataAccess.Repositories.DisciplineRepositories
         public async Task<Discipline?> GetById(Guid id)
         {
             return await _dbContext.Discipline.AsNoTracking().FirstOrDefaultAsync(user => user.Id == id);
+        }
+
+        public void Update(Discipline entity)
+        {
+            _dbContext.Discipline.Update(entity);
         }
     }
 }
