@@ -1,6 +1,6 @@
 ﻿using Quizzando.Communication.Responses.User;
 
-namespace Quizzando.UseCases.Users.GetById
+namespace Quizzando.UseCases.Users.Get.ById
 {
     public interface IGetUserByIdUseCase
     {

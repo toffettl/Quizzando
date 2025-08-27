@@ -4,7 +4,7 @@ using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Exception;
 using Quizzando.Exception.ExceptionsBase;
 
-namespace Quizzando.UseCases.Users.GetById
+namespace Quizzando.UseCases.Users.Get.ById
 {
     public class GetUserByIdUseCase : IGetUserByIdUseCase
     {
