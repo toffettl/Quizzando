@@ -6,6 +6,10 @@ using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.QuestionRepositories;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.UseCases.Questions.Create;
+using Quizzando.UseCases.Questions.Delete;
+using Quizzando.UseCases.Questions.GetAll;
+using Quizzando.UseCases.Questions.GetById;
+using Quizzando.UseCases.Questions.UpdateById;
 using Quizzando.UseCases.Users.GetById;
 using Quizzando.UseCases.Users.Register;
 
@@ -33,6 +37,8 @@ namespace Quizzando
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
             services.AddScoped<IQuestionWriteOnlyRepository, QuestionRepository>();
+            services.AddScoped<IQuestionReadOnlyRepository, QuestionRepository>();
+            services.AddScoped<IQuestionUpdateOnlyRepository, QuestionRepository>();
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
@@ -48,6 +54,10 @@ namespace Quizzando
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
             services.AddScoped<IGetUserByIdUseCase, GetUserByIdUseCase>();
             services.AddScoped<ICreateQuestionUseCase, CreateQuestionUseCase>();
+            services.AddScoped<IGetAllQuestionsUseCase, GetAllQuestionsUseCase>();
+            services.AddScoped<IGetByIdQuestionUseCase, GetByIdQuestionUseCase>();
+            services.AddScoped<IUpdateByIdQuestionUseCase, UpdateByIdQuestionUseCase>();
+            services.AddScoped<IDeleteQuestionUseCase, DeleteQuestionUseCase>();
         } 
     }
 }

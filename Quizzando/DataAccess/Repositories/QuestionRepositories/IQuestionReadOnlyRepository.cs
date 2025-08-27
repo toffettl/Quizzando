@@ -5,5 +5,6 @@ namespace Quizzando.DataAccess.Repositories.QuestionRepositories
     public interface IQuestionReadOnlyRepository
     {
         Task<List<Question>> GetAll();
+        Task<Question?> GetById(Guid id);
     }
 }

@@ -2,7 +2,7 @@
 using Quizzando.Communication.Requests.Question;
 using Quizzando.Exception;
 
-namespace Quizzando.UseCases.Questions.Create
+namespace Quizzando.UseCases.Questions
 {
     public class QuestionValidator : AbstractValidator<QuestionRequest>
     {

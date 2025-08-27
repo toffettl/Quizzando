@@ -2,6 +2,6 @@
 {
     public class QuestionsResponse
     {
-        public List<QuestionResponse>? Questions { get; set; }
+        public List<QuestionResponse>? Question { get; set; }
     }
 }
