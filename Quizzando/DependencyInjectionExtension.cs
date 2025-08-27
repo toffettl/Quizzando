@@ -91,7 +91,7 @@ namespace Quizzando
                 var expirationTime = configuration.GetValue<uint>("JwtSettings:ExpirationTimeMinutes");
                 var signingKey = configuration.GetValue<string>("JwtSettings:SigningKey");
 
-                return new JwtTokenGenerator(expirationTime, signingKey);
+                return new JwtTokenGenerator(expirationTime, signingKey!);
             });
         }
     }
