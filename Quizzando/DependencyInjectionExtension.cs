@@ -7,6 +7,8 @@ using Quizzando.DataAccess.Repositories.CourseRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepository;
 using Quizzando.DataAccess.Repositories.UserRepositories;
+using Quizzando.Security.Cryptography;
+using Quizzando.Security.Tokens;
 using Quizzando.UseCases.Courses.Create;
 using Quizzando.UseCases.Courses.Delete;
 using Quizzando.UseCases.Courses.GetAll;
@@ -20,6 +22,7 @@ using Quizzando.UseCases.Disciplines.Update;
 using Quizzando.UseCases.Users.Delete;
 using Quizzando.UseCases.Users.Get.All;
 using Quizzando.UseCases.Users.Get.ById;
+using Quizzando.UseCases.Users.Login;
 using Quizzando.UseCases.Users.Register;
 using Quizzando.UseCases.Users.Update;
 
@@ -80,6 +83,16 @@ namespace Quizzando
             services.AddScoped<IGetAllDisciplinesUseCase, GetAllDisciplinesUseCase>();
             services.AddScoped<IGetDisciplineByIdUseCase, GetDisciplineByIdUseCase>();
             services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
-        } 
+            services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
+            services.AddScoped<IPasswordEncripter, Security.Cryptography.BCrypto>();
+            services.AddScoped<IAccessTokenGenerator>(provider =>
+            {
+                var configuration = provider.GetRequiredService<IConfiguration>();
+                var expirationTime = configuration.GetValue<uint>("JwtSettings:ExpirationTimeMinutes");
+                var signingKey = configuration.GetValue<string>("JwtSettings:SigningKey");
+
+                return new JwtTokenGenerator(expirationTime, signingKey);
+            });
+        }
     }
 }
