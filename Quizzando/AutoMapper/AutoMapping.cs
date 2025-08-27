@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Quizzando.Communication.Requests.Disciplines;
+using Quizzando.Communication.Requests.Course;
 using Quizzando.Communication.Requests.User;
-using Quizzando.Communication.Responses.Disciplines;
+using Quizzando.Communication.Responses.Course;
 using Quizzando.Communication.Responses.User;
 using Quizzando.Models;
 
@@ -17,14 +17,20 @@ namespace Quizzando.AutoMapper
         private void RequestToEntity()
         {
             CreateMap<UserRegisterRequest, User>();
-            CreateMap<DisciplineRequest, Discipline>();
+            CreateMap<CreateCourseRequest, Course>();
+            CreateMap<UpdateCourseRequest, Course>();
+            CreateMap<UserUpdateRequest, User>();
         }
 
         private void ResponseToEntity()
         {
             CreateMap<User, UserRegisterResponse>();
             CreateMap<User, UserGetByIdResponse>();
-            CreateMap<Discipline, DisciplineResponse>();
+            CreateMap<Course, CreateCourseResponse>();
+            CreateMap<Course, GetCourseByIdResponse>();
+            CreateMap<Course, GetAllCoursesResponse>();
+            CreateMap<Course, UpdateCourseResponse>();
+            CreateMap<User, UserGetAllResponse>();
         }
 
 
