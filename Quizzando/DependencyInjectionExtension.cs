@@ -1,15 +1,15 @@
-﻿using FluentValidation;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Quizzando.AutoMapper;
 using Quizzando.DataAccess;
 using Quizzando.DataAccess.Repositories;
-using Quizzando.DataAccess.Repositories.CourseRepositories;
+using Quizzando.DataAccess.Repositories.DisciplineRepositories;
+using Quizzando.DataAccess.Repositories.DisciplineRepository;
 using Quizzando.DataAccess.Repositories.UserRepositories;
-using Quizzando.UseCases.Courses.Create;
-using Quizzando.UseCases.Courses.Delete;
-using Quizzando.UseCases.Courses.GetAll;
-using Quizzando.UseCases.Courses.GetById;
-using Quizzando.UseCases.Courses.Update;
+using Quizzando.UseCases.Disciplines.Create;
+using Quizzando.UseCases.Disciplines.Delete;
+using Quizzando.UseCases.Disciplines.GetAll;
+using Quizzando.UseCases.Disciplines.GetById;
+using Quizzando.UseCases.Disciplines.Update;
 using Quizzando.UseCases.Users.GetById;
 using Quizzando.UseCases.Users.Register;
 
@@ -36,8 +36,9 @@ namespace Quizzando
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
-            services.AddScoped<ICourseWriteOnlyRepository, CourseRepository>();
-            services.AddScoped<ICourseReadOnlyRepository, CourseRepository>();
+            services.AddScoped<IDisciplineWriteOnlyRepository, DisciplineRepository>();
+            services.AddScoped<IDisciplineReadOnlyRepository, DisciplineRepository>();
+            services.AddScoped<IDisciplineUpdateOnlyRepository, DisciplineRepository>();
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
@@ -52,11 +53,11 @@ namespace Quizzando
         {
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
             services.AddScoped<IGetUserByIdUseCase, GetUserByIdUseCase>();
-            services.AddScoped<ICreateCourseUseCase, CreateCourseUseCase>();
-            services.AddScoped<IGetCourseByIdUseCase, GetCourseByIdUseCase>();
-            services.AddScoped<IGetAllCoursesUseCase,  GetAllCoursesUseCase>();
-            services.AddScoped<IUpdateCourseUseCase, UpdateCourseUseCase>();
-            services.AddScoped<IDeleteCourseUseCase, DeleteCourseUseCase>();
+            services.AddScoped<ICreateDisciplineUseCase, CreateDisciplineUseCase>();
+            services.AddScoped<IGetAllDisciplinesUseCase, GetAllDisciplinesUseCase>();
+            services.AddScoped<IGetDisciplineByIdUseCase, GetDisciplineByIdUseCase>();
+            services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
+            services.AddScoped<IDeleteDisciplineUseCase, DeleteDisciplineUseCase>();
         } 
     }
 }
