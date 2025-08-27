@@ -15,6 +15,7 @@ namespace Quizzando.AutoMapper
         private void RequestToEntity()
         {
             CreateMap<UserRegisterRequest, User>();
+            CreateMap<UserUpdateRequest, User>();
         }
 
         private void ResponseToEntity()

@@ -8,6 +8,7 @@ using Quizzando.UseCases.Users.Delete;
 using Quizzando.UseCases.Users.Get.All;
 using Quizzando.UseCases.Users.Get.ById;
 using Quizzando.UseCases.Users.Register;
+using Quizzando.UseCases.Users.Update;
 
 namespace Quizzando
 {
@@ -32,6 +33,7 @@ namespace Quizzando
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
+            services.AddScoped<IUserUpdateOnlyRepository, UserRepository>() ;
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
@@ -48,6 +50,7 @@ namespace Quizzando
             services.AddScoped<IGetUserByIdUseCase, GetUserByIdUseCase>();
             services.AddScoped<IGetAllUsersUseCase, GetAllUsersUseCase>();
             services.AddScoped<IDeleteUserUseCase, DeleteUserUseCase>();
+            services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();    
         } 
     }
 }

@@ -7,6 +7,7 @@ using Quizzando.UseCases.Users.Delete;
 using Quizzando.UseCases.Users.Get.All;
 using Quizzando.UseCases.Users.Get.ById;
 using Quizzando.UseCases.Users.Register;
+using Quizzando.UseCases.Users.Update;
 
 namespace Quizzando.Controllers
 {
@@ -56,6 +57,19 @@ namespace Quizzando.Controllers
         {
             await useCase.Execute(id);
 
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Update(
+            [FromServices] IUpdateUserUseCase useCase,
+            [FromRoute] Guid id,
+            [FromBody] UserUpdateRequest userUpdateRequest)
+        {
+            await useCase.Execute(id, userUpdateRequest);
             return NoContent();
         }
     }

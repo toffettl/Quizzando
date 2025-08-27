@@ -3,7 +3,7 @@ using Quizzando.Models;
 
 namespace Quizzando.DataAccess.Repositories.UserRepositories
 {
-    public class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository
+    public class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository, IUserUpdateOnlyRepository
     {
         private readonly QuizzandoDbContext _dbContext;
         public UserRepository(QuizzandoDbContext dbContext)
@@ -42,6 +42,11 @@ namespace Quizzando.DataAccess.Repositories.UserRepositories
             _dbContext.User.Remove(result);
 
             return true;
+        }
+
+        public void Update(User user)
+        {
+            _dbContext.User.Update(user);
         }
     }
 }
