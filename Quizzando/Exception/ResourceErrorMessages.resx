@@ -135,6 +135,9 @@
   <data name="NAME_EMPTY" xml:space="preserve">
     <value>Name empty</value>
   </data>
+  <data name="QUESTION_STATEMENT_EMPTY" xml:space="preserve">
+    <value>Statement empty</value>
+  </data>
   <data name="UNKNOWM_ERROR" xml:space="preserve">
     <value>Unknowm error</value>
   </data>

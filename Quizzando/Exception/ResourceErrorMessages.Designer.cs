@@ -115,6 +115,15 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Statement empty.
+        /// </summary>
+        public static string QUESTION_STATEMENT_EMPTY {
+            get {
+                return ResourceManager.GetString("QUESTION_STATEMENT_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Unknowm error.
         /// </summary>
         public static string UNKNOWM_ERROR {
