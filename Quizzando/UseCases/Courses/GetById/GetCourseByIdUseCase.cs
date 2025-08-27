@@ -13,7 +13,7 @@ namespace Quizzando.UseCases.Courses.GetById
 
         public GetCourseByIdUseCase(ICourseReadOnlyRepository courseReadOnlyRepository,
             IMapper mapper
-            )
+        )
         {
             _courseReadOnlyRepository = courseReadOnlyRepository;
             _mapper = mapper;

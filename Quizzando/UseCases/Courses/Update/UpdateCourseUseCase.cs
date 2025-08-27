@@ -15,29 +15,48 @@ namespace Quizzando.UseCases.Courses.Update
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public UpdateCourseUseCase(ICourseWriteOnlyRepository courseWriteOnlyRepository, ICourseReadOnlyRepository courseReadOnlyRepository, IMapper mapper, IUnitOfWork unitOfWork)
+        public UpdateCourseUseCase(
+            ICourseWriteOnlyRepository courseWriteOnlyRepository,
+            ICourseReadOnlyRepository courseReadOnlyRepository,
+            IMapper mapper,
+            IUnitOfWork unitOfWork)
         {
             _courseWriteOnlyRepository = courseWriteOnlyRepository;
             _courseReadOnlyRepository = courseReadOnlyRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
+
         public async Task<UpdateCourseResponse> Execute(Guid id, UpdateCourseRequest request)
         {
+            await Validate(request);
+
             var course = await _courseReadOnlyRepository.GetCourseById(id);
-            
+
             if (course == null)
             {
                 throw new NotFoundException(ResourceErrorMessages.COURSE_NOT_FOUND);
             }
-            
-            course.CourseName = request.courseName;
-            
-            await _courseWriteOnlyRepository.Update(course);
 
+            course.CourseName = request.courseName;
+
+            await _courseWriteOnlyRepository.Update(course);
             await _unitOfWork.Commit();
 
             return _mapper.Map<UpdateCourseResponse>(course);
+        }
+
+        private async Task Validate(UpdateCourseRequest request)
+        {
+            var result = new UpdateCourseValidator().Validate(request);
+
+            if (!result.IsValid)
+            {
+                var errorMessages = result.Errors.Select(x => x.ErrorMessage).ToList();
+                throw new ErrorOnValidationException(errorMessages);
+            }
+
+            await Task.CompletedTask;
         }
     }
 }
