@@ -147,4 +147,16 @@
   <data name="QUESTION_NOT_FOUND" xml:space="preserve">
     <value>Question not found</value>
   </data>
+  <data name="NAME_TOO_SHORT" xml:space="preserve">
+    <value>The name is too short</value>
+  </data>
+  <data name="DESCRIPTION_EMPTY" xml:space="preserve">
+    <value>Description empty</value>
+  </data>
+  <data name="DISCIPLINE_NOT_FOUND" xml:space="preserve">
+    <value>Discipline not found</value>
+  </data>
+  <data name="COURSE_NOT_FOUND" xml:space="preserve">
+    <value>Course not found</value>
+  </data>
 </root>

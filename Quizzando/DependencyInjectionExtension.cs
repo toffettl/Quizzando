@@ -26,7 +26,6 @@ using Quizzando.UseCases.Questions.Delete;
 using Quizzando.UseCases.Questions.GetAll;
 using Quizzando.UseCases.Questions.GetById;
 using Quizzando.UseCases.Questions.UpdateById;
-using Quizzando.UseCases.Users.GetById;
 using Quizzando.UseCases.Users.Register;
 using Quizzando.UseCases.Users.Update;
 
