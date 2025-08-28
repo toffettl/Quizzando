@@ -33,7 +33,7 @@ namespace Quizzando.UseCases.Questions.UpdateById
 
             if (question == null)
             {
-                throw new EntryPointNotFoundException(ResourceErrorMessages.QUESTION_NOT_FOUND);
+                throw new NotFoundException(ResourceErrorMessages.QUESTION_NOT_FOUND);
             }
 
             _mapper.Map(request, question);

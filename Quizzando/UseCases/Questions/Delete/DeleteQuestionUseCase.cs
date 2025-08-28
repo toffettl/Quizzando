@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using Quizzando.DataAccess.Repositories.QuestionRepositories;
 using Quizzando.DataAccess.Repositories;
-using System.Data;
+using Quizzando.DataAccess.Repositories.QuestionRepositories;
 using Quizzando.Exception;
+using Quizzando.Exception.ExceptionsBase;
+using System.Data;
 
 namespace Quizzando.UseCases.Questions.Delete
 {
@@ -27,7 +28,7 @@ namespace Quizzando.UseCases.Questions.Delete
 
             if(result == false)
             {
-               throw new EntryPointNotFoundException(ResourceErrorMessages.QUESTION_NOT_FOUND);
+               throw new NotFoundException(ResourceErrorMessages.QUESTION_NOT_FOUND);
             }
 
             await _unitOfWork.Commit();

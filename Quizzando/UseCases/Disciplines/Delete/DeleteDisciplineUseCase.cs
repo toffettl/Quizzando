@@ -1,6 +1,7 @@
 ﻿using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepository;
 using Quizzando.Exception;
+using Quizzando.Exception.ExceptionsBase;
 
 namespace Quizzando.UseCases.Disciplines.Delete
 {
@@ -23,7 +24,7 @@ namespace Quizzando.UseCases.Disciplines.Delete
 
             if (result != true)
             {
-                throw new DirectoryNotFoundException(ResourceErrorMessages.DISCIPLINE_NOT_FOUND);
+                throw new NotFoundException(ResourceErrorMessages.DISCIPLINE_NOT_FOUND);
             }
 
             await _unitOfWork.Commit();

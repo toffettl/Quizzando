@@ -34,7 +34,7 @@ namespace Quizzando.UseCases.Disciplines.Update
 
             if (discipline is null)
             {
-                throw new DirectoryNotFoundException(ResourceErrorMessages.DISCIPLINE_NOT_FOUND);
+                throw new NotFoundException(ResourceErrorMessages.DISCIPLINE_NOT_FOUND);
             }
 
             _mapper.Map(request, discipline);

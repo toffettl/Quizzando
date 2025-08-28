@@ -2,6 +2,7 @@
 using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Exception;
+using Quizzando.Exception.ExceptionsBase;
 
 namespace Quizzando.UseCases.Users.Delete
 {
@@ -24,7 +25,7 @@ namespace Quizzando.UseCases.Users.Delete
 
             if (result != true)
             {
-                throw new DirectoryNotFoundException(ResourceErrorMessages.USER_NOT_FOUND);
+                throw new NotFoundException(ResourceErrorMessages.USER_NOT_FOUND);
             }
 
             await _unitOfWork.Commit();

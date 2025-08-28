@@ -36,7 +36,7 @@ namespace Quizzando.UseCases.Users.Update
 
             if (user == null)
             {
-                throw new DirectoryNotFoundException(ResourceErrorMessages.USER_NOT_FOUND);
+                throw new NotFoundException(ResourceErrorMessages.USER_NOT_FOUND);
             }
 
             _mapper.Map(userUpdateRequest, user);
