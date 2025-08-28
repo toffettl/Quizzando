@@ -4,5 +4,7 @@
     {
         public Guid Id { get; set; }
         public string? QuestionStatement { get; set; }
+        public Guid DisciplineId { get; set; }
+        public Discipline? Discipline { get; set; }
     }
 }
