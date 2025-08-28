@@ -22,6 +22,20 @@ namespace Quizzando.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Quizzando.Models.Course", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CourseName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Course");
+                });
+
             modelBuilder.Entity("Quizzando.Models.Question", b =>
                 {
                     b.Property<Guid>("Id")
