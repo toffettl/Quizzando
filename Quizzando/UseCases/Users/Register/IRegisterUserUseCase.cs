@@ -5,6 +5,7 @@ namespace Quizzando.UseCases.Users.Register
 {
     public interface IRegisterUserUseCase
     { 
+      
         Task<UserRegisterResponse> Execute(UserRegisterRequest request);
     }
 }
