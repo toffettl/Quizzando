@@ -159,4 +159,7 @@
   <data name="COURSE_NOT_FOUND" xml:space="preserve">
     <value>Course not found</value>
   </data>
+  <data name="INVALID_REFRESH_TOKEN" xml:space="preserve">
+    <value>Invalid refresh token</value>
+  </data>
 </root>

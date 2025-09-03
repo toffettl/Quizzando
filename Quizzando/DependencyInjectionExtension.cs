@@ -88,10 +88,11 @@ namespace Quizzando
             services.AddScoped<IAccessTokenGenerator>(provider =>
             {
                 var configuration = provider.GetRequiredService<IConfiguration>();
-                var expirationTime = configuration.GetValue<uint>("JwtSettings:ExpirationTimeMinutes");
+                var accessTokenExpirationTime = configuration.GetValue<uint>("JwtSettings:AccessTokenExpirationInMinutes");
+                var refreshTokenExpirationTime = configuration.GetValue<uint>("JwtSetting:RefreshTokenExpirationInMinutes");
                 var signingKey = configuration.GetValue<string>("JwtSettings:SigningKey");
 
-                return new JwtTokenGenerator(expirationTime, signingKey!);
+                return new JwtAccessTokenGenerator(accessTokenExpirationTime, signingKey!);
             });
         }
     }

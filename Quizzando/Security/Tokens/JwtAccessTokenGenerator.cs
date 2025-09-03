@@ -7,14 +7,14 @@ using System.Text;
 
 namespace Quizzando.Security.Tokens
 {
-    public class JwtTokenGenerator : IAccessTokenGenerator
+    public class JwtAccessTokenGenerator : IAccessTokenGenerator
     {
-        private readonly uint _expirationTimeMinutes;
+        private readonly uint _accessTokenExpirationTime;
         private readonly string _signingKey;
 
-        public JwtTokenGenerator(uint expirationTimeMinutes, string signingKey)
+        public JwtAccessTokenGenerator(uint accessTokenExpirationTime, string signingKey)
         {
-            _expirationTimeMinutes = expirationTimeMinutes;
+            _accessTokenExpirationTime = accessTokenExpirationTime;
             _signingKey = signingKey;
         }
 
@@ -28,7 +28,7 @@ namespace Quizzando.Security.Tokens
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Expires = DateTime.UtcNow.AddMinutes(_expirationTimeMinutes),
+                Expires = DateTime.UtcNow.AddMinutes(_accessTokenExpirationTime),
                 SigningCredentials = new SigningCredentials(SecurityKey(), SecurityAlgorithms.HmacSha256Signature),
                 Subject = new ClaimsIdentity(claims)
             };
