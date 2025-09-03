@@ -13,6 +13,9 @@ namespace Quizzando.UseCases.Disciplines
 
             RuleFor(discipline => discipline.Description)
                 .NotEmpty().WithMessage(ResourceErrorMessages.DESCRIPTION_EMPTY);
+
+            RuleFor(discipline => discipline.CourseId)
+                .NotEmpty().WithMessage(ResourceErrorMessages.COURSE_ID_EMPTY);
         }
     }
 }
