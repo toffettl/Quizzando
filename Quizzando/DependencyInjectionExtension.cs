@@ -6,6 +6,7 @@ using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.CourseRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepository;
+using Quizzando.DataAccess.Repositories.QuestionRepositories;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Security.Cryptography;
 using Quizzando.Security.Tokens;
@@ -22,6 +23,11 @@ using Quizzando.UseCases.Disciplines.Update;
 using Quizzando.UseCases.Users.Delete;
 using Quizzando.UseCases.Users.Get.All;
 using Quizzando.UseCases.Users.Get.ById;
+using Quizzando.UseCases.Questions.Create;
+using Quizzando.UseCases.Questions.Delete;
+using Quizzando.UseCases.Questions.GetAll;
+using Quizzando.UseCases.Questions.GetById;
+using Quizzando.UseCases.Questions.UpdateById;
 using Quizzando.UseCases.Users.Login;
 using Quizzando.UseCases.Users.Register;
 using Quizzando.UseCases.Users.Update;
@@ -55,6 +61,9 @@ namespace Quizzando
             services.AddScoped<IDisciplineReadOnlyRepository, DisciplineRepository>();
             services.AddScoped<IDisciplineWriteOnlyRepository, DisciplineRepository>();
             services.AddScoped<IDisciplineUpdateOnlyRepository, DisciplineRepository>();
+            services.AddScoped<IQuestionWriteOnlyRepository, QuestionRepository>();
+            services.AddScoped<IQuestionReadOnlyRepository, QuestionRepository>();
+            services.AddScoped<IQuestionUpdateOnlyRepository, QuestionRepository>();
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
@@ -83,6 +92,12 @@ namespace Quizzando
             services.AddScoped<IGetAllDisciplinesUseCase, GetAllDisciplinesUseCase>();
             services.AddScoped<IGetDisciplineByIdUseCase, GetDisciplineByIdUseCase>();
             services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
+            services.AddScoped<ICreateQuestionUseCase, CreateQuestionUseCase>();
+            services.AddScoped<IGetAllQuestionsUseCase, GetAllQuestionsUseCase>();
+            services.AddScoped<IGetByIdQuestionUseCase, GetByIdQuestionUseCase>();
+            services.AddScoped<IUpdateByIdQuestionUseCase, UpdateByIdQuestionUseCase>();
+            services.AddScoped<IDeleteQuestionUseCase, DeleteQuestionUseCase>();
+        } 
             services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
             services.AddScoped<IPasswordEncripter, Security.Cryptography.BCrypto>();
             services.AddScoped<IAccessTokenGenerator>(provider =>
