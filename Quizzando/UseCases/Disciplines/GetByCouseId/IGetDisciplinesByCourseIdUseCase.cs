@@ -2,7 +2,7 @@
 
 namespace Quizzando.UseCases.Disciplines.GetByCouseId
 {
-    public interface IGetDisciplinesByCouseId
+    public interface IGetDisciplinesByCourseIdUseCase
     {
         Task<DisciplineResponses> Execute(Guid courseId);
     }

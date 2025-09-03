@@ -4,12 +4,12 @@ using Quizzando.DataAccess.Repositories.DisciplineRepositories;
 
 namespace Quizzando.UseCases.Disciplines.GetByCouseId
 {
-    public class GetDisciplinesByCourseId : IGetDisciplinesByCouseId
+    public class GetDisciplinesByCourseIdUseCase : IGetDisciplinesByCourseIdUseCase
     {
         private readonly IDisciplineReadOnlyRepository _disciplineReadOnlyRepository;
         private readonly IMapper _mapper;
 
-        public GetDisciplinesByCourseId(
+        public GetDisciplinesByCourseIdUseCase(
             IDisciplineReadOnlyRepository disciplineReadOnlyRepository,
             IMapper mapper)
         {
