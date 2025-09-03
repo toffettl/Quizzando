@@ -38,9 +38,14 @@ namespace Quizzando.DataAccess.Repositories.DisciplineRepositories
             return await _dbContext.Discipline.AsNoTracking().ToListAsync();
         }
 
+        public async Task<List<Discipline>> GetByCourseId(Guid courseId)
+        {
+            return await _dbContext.Discipline.AsNoTracking().Where(d => d.Courses.Where(c => c.Id == courseId).Count() != 0).ToListAsync();
+        }
+
         public async Task<Discipline?> GetById(Guid id)
         {
-            return await _dbContext.Discipline.AsNoTracking().FirstOrDefaultAsync(user => user.Id == id);
+            return await _dbContext.Discipline.AsNoTracking().FirstOrDefaultAsync(d => d.Id == id);
         }
 
         public void Update(Discipline entity)
