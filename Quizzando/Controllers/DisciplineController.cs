@@ -5,6 +5,7 @@ using Quizzando.Communication.Responses.Disciplines;
 using Quizzando.UseCases.Disciplines.Create;
 using Quizzando.UseCases.Disciplines.Delete;
 using Quizzando.UseCases.Disciplines.GetAll;
+using Quizzando.UseCases.Disciplines.GetByCouseId;
 using Quizzando.UseCases.Disciplines.GetById;
 using Quizzando.UseCases.Disciplines.Update;
 
@@ -50,6 +51,23 @@ namespace Quizzando.Controllers
             [FromRoute] Guid id)
         {
             var response = await useCase.Execute(id);
+
+            return Ok(response);
+        }
+
+        [HttpGet("courseId/{courseId}")]
+        [ProducesResponseType(typeof(DisciplineResponses), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> GetByCourseId(
+            [FromServices] IGetDisciplinesByCourseIdUseCase useCase,
+            [FromRoute] Guid courseId)
+        {
+            var response = await useCase.Execute(courseId);
+
+            if (response.Disciplines?.Count == 0)
+            {
+                return NoContent();
+            }
 
             return Ok(response);
         }
