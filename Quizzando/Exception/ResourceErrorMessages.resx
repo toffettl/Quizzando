@@ -159,4 +159,7 @@
   <data name="COURSE_NOT_FOUND" xml:space="preserve">
     <value>Course not found</value>
   </data>
+  <data name="COURSE_ID_EMPTY" xml:space="preserve">
+    <value>Id course empty</value>
+  </data>
 </root>
