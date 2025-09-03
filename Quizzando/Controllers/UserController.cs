@@ -6,6 +6,7 @@ using Quizzando.Communication.Responses.User;
 using Quizzando.UseCases.Users.Delete;
 using Quizzando.UseCases.Users.Get.All;
 using Quizzando.UseCases.Users.Get.ById;
+using Quizzando.UseCases.Users.Login;
 using Quizzando.UseCases.Users.Register;
 using Quizzando.UseCases.Users.Update;
 
@@ -72,5 +73,18 @@ namespace Quizzando.Controllers
             await useCase.Execute(id, userUpdateRequest);
             return NoContent();
         }
+
+        [HttpPost("login")]
+        [ProducesResponseType(typeof(ResponseTokenJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Login(
+            [FromServices] IDoLoginUseCase useCase,
+            [FromBody] RequestLoginJson request)
+        {
+            var response = await useCase.Execute(request);
+
+            return Ok(response);
+        }
+
     }
 }
