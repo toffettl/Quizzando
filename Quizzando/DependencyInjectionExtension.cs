@@ -98,7 +98,7 @@ namespace Quizzando
             services.AddScoped<IDeleteDisciplineUseCase, DeleteDisciplineUseCase>();
             services.AddScoped<IGetAllDisciplinesUseCase, GetAllDisciplinesUseCase>();
             services.AddScoped<IGetDisciplineByIdUseCase, GetDisciplineByIdUseCase>();
-            services.AddScoped<IGetDisciplinesByCouseId, GetDisciplinesByCourseId>();
+            services.AddScoped<IGetDisciplinesByCourseIdUseCase, GetDisciplinesByCourseIdUseCase>();
             services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
         }
     }
