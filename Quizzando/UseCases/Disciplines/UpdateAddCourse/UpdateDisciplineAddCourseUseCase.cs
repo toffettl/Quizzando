@@ -2,7 +2,6 @@
 using Quizzando.DataAccess.Repositories.CourseRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepositories;
 using Quizzando.Exception;
-using Quizzando.Models;
 
 namespace Quizzando.UseCases.Disciplines.UpdateAddCourse
 {
@@ -40,8 +39,6 @@ namespace Quizzando.UseCases.Disciplines.UpdateAddCourse
             {
                 throw new DirectoryNotFoundException(ResourceErrorMessages.COURSE_NOT_FOUND);
             }
-
-            discipline.Courses.Add(course);
 
             _disciplineUpdateOnlyRepository.Update(discipline);
 
