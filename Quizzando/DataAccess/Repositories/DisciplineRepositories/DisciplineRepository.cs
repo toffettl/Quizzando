@@ -16,12 +16,14 @@ namespace Quizzando.DataAccess.Repositories.DisciplineRepositories
 
         public async Task Add(Discipline discipline)
         {
-            await _dbContext.Discipline.AddAsync(discipline);
+            await _dbContext.Discipline
+                .AddAsync(discipline);
         }
 
         public async Task<bool?> Delete(Guid id)
         {
-            var result = await _dbContext.Discipline.FirstOrDefaultAsync(discipline => discipline.Id == id);
+            var result = await _dbContext.Discipline
+                .FirstOrDefaultAsync(discipline => discipline.Id == id);
 
             if (result == null)
             {
@@ -35,22 +37,32 @@ namespace Quizzando.DataAccess.Repositories.DisciplineRepositories
 
         public async Task<List<Discipline>> GetAll()
         {
-            return await _dbContext.Discipline.AsNoTracking().ToListAsync();
+            return await _dbContext.Discipline
+                .AsNoTracking()
+                .ToListAsync();
         }
 
         public async Task<List<Discipline>> GetByCourseId(Guid courseId)
         {
-            return await _dbContext.Discipline.AsNoTracking().Where(d => d.Courses.Where(c => c.Id == courseId).Count() != 0).ToListAsync();
+            return await _dbContext.Discipline
+                .AsNoTracking()
+                .Where(d => d.Courses.Where(c => c.Id == courseId).Count() != 0)
+                .ToListAsync();
         }
 
         public async Task<Discipline?> GetById(Guid id)
         {
-            return await _dbContext.Discipline.AsNoTracking().FirstOrDefaultAsync(d => d.Id == id);
+            return await _dbContext.Discipline
+                .AsSplitQuery()
+                .Include(d => d.Courses)
+                .AsTracking()
+                .FirstOrDefaultAsync(d => d.Id == id);
         }
 
         public void Update(Discipline entity)
         {
-            _dbContext.Discipline.Update(entity);
+            _dbContext.Discipline
+                .Update(entity);
         }
     }
 }
