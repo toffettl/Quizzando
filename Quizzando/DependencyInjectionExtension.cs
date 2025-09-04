@@ -20,6 +20,7 @@ using Quizzando.UseCases.Disciplines.GetByCouseId;
 using Quizzando.UseCases.Disciplines.GetById;
 using Quizzando.UseCases.Disciplines.Update;
 using Quizzando.UseCases.Disciplines.UpdateAddCourse;
+using Quizzando.UseCases.Disciplines.UpdateRemoveCourse;
 using Quizzando.UseCases.Users.Delete;
 using Quizzando.UseCases.Users.Get.All;
 using Quizzando.UseCases.Users.Get.ById;
@@ -101,6 +102,7 @@ namespace Quizzando
             services.AddScoped<IGetDisciplinesByCourseIdUseCase, GetDisciplinesByCourseIdUseCase>();
             services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
             services.AddScoped<IUpdateDisciplineAddCourseUseCase, UpdateDisciplineAddCourseUseCase>();
+            services.AddScoped<IUpdateDisciplineRemoveCourseUseCase, UpdateDisciplineRemoveCourseUseCase>();
         }
     }
 }
