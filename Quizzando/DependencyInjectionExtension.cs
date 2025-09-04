@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Quizzando.AutoMapper;
 using Quizzando.DataAccess;
 using Quizzando.DataAccess.Repositories;
@@ -20,6 +19,7 @@ using Quizzando.UseCases.Disciplines.GetAll;
 using Quizzando.UseCases.Disciplines.GetByCouseId;
 using Quizzando.UseCases.Disciplines.GetById;
 using Quizzando.UseCases.Disciplines.Update;
+using Quizzando.UseCases.Disciplines.UpdateAddCourse;
 using Quizzando.UseCases.Users.Delete;
 using Quizzando.UseCases.Users.Get.All;
 using Quizzando.UseCases.Users.Get.ById;
@@ -100,6 +100,7 @@ namespace Quizzando
             services.AddScoped<IGetDisciplineByIdUseCase, GetDisciplineByIdUseCase>();
             services.AddScoped<IGetDisciplinesByCourseIdUseCase, GetDisciplinesByCourseIdUseCase>();
             services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
+            services.AddScoped<IUpdateDisciplineAddCourseUseCase, UpdateDisciplineAddCourseUseCase>();
         }
     }
 }
