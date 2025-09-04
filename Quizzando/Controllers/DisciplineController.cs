@@ -8,6 +8,7 @@ using Quizzando.UseCases.Disciplines.GetAll;
 using Quizzando.UseCases.Disciplines.GetByCouseId;
 using Quizzando.UseCases.Disciplines.GetById;
 using Quizzando.UseCases.Disciplines.Update;
+using Quizzando.UseCases.Disciplines.UpdateAddCourse;
 
 namespace Quizzando.Controllers
 {
@@ -82,6 +83,19 @@ namespace Quizzando.Controllers
             [FromBody] DisciplineRequest request)
         {
             await useCase.Execute(id, request);
+
+            return NoContent();
+        }
+
+        [HttpPut("Add/Course/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UpdateAddCourse(
+            [FromServices] IUpdateDisciplineAddCourseUseCase useCase,
+            [FromRoute] Guid id,
+            [FromQuery] Guid courseId)
+        {
+            await useCase.Execute(id, courseId);
 
             return NoContent();
         }
