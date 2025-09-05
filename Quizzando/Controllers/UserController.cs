@@ -75,7 +75,7 @@ namespace Quizzando.Controllers
         }
 
         [HttpPost("login")]
-        [ProducesResponseType(typeof(ResponseTokenJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Quizzando.Communication.Responses.ResponseTokenJson), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Login(
             [FromServices] IDoLoginUseCase useCase,

@@ -5,13 +5,13 @@ using MimeKit;
 using Quizzando.Settings;
 using System.Threading.Tasks;
 
-namespace Quizzando.UseCases.Users.RecoverPassword
+namespace Quizzando.UseCases.RecoverEmail.EmailUseCase
 {
-    public class EmailService : IEmailService
+    public class SendEmailUseCase : ISendEmailUseCase
     {
         private readonly EmailSettings _settings;
 
-        public EmailService(IOptions<EmailSettings> options)
+        public SendEmailUseCase(IOptions<EmailSettings> options)
         {
             _settings = options.Value;
         }

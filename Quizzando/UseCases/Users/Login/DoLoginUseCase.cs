@@ -4,6 +4,7 @@ using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Exception.ExceptionsBase;
 using Quizzando.Security.Cryptography;
 using Quizzando.Security.Tokens;
+using Quizzando.Security.Tokens.AccessToken;
 
 namespace Quizzando.UseCases.Users.Login
 {
