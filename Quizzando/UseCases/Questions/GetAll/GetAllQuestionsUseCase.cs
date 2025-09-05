@@ -25,7 +25,7 @@ namespace Quizzando.UseCases.Questions.GetAll
 
             return new QuestionsResponse
             {
-                Question = _mapper.Map<List<QuestionResponse>>(questions)
+                Questions = _mapper.Map<List<QuestionResponse>>(questions)
             };
         }
     }

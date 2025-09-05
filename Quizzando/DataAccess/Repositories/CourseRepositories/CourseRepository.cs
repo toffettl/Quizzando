@@ -3,7 +3,7 @@ using Quizzando.Models;
 
 namespace Quizzando.DataAccess.Repositories.CourseRepositories
 {
-    public class CourseRepository : ICourseWriteOnlyRepository, ICourseReadOnlyRepository
+    public class CourseRepository : ICourseWriteOnlyRepository, ICourseReadOnlyRepository, ICourseUpdateOnlyRepository
     {
         private readonly QuizzandoDbContext _dbContext;
 
@@ -17,12 +17,12 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
             await _dbContext.Course.AddAsync(course);
         }
 
-        public async Task Update(Course course)
+        public void Update(Course course)
         {
             _dbContext.Course.Update(course);
         }
 
-        public async Task Delete(Course course)
+        public void Delete(Course course)
         {
             _dbContext.Course.Remove(course);
         }

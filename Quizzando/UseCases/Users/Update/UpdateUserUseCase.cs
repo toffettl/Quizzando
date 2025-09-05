@@ -30,7 +30,7 @@ namespace Quizzando.UseCases.Users.Update
 
         public async Task Execute(Guid id, UserUpdateRequest userUpdateRequest)
         {
-            await Validate(userUpdateRequest);
+            Validate(userUpdateRequest);
 
             var user = await _userReadOnlyRepository.GetUserById(id);
 
@@ -46,7 +46,7 @@ namespace Quizzando.UseCases.Users.Update
             await _unitOfWork.Commit();
         }
 
-        private async Task Validate(UserUpdateRequest request)
+        private void Validate(UserUpdateRequest request)
         {
             var result = new UpdateUserValidator().Validate(request);
 
