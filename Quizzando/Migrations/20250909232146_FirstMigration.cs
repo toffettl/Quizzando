@@ -16,7 +16,8 @@ namespace Quizzando.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    CourseName = table.Column<string>(type: "text", nullable: true)
+                    CourseName = table.Column<string>(type: "text", nullable: true),
+                    DisciplineId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,7 +32,9 @@ namespace Quizzando.Migrations
                     Name = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    QuestionsId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CoursesId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -84,7 +87,7 @@ namespace Quizzando.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     QuestionStatement = table.Column<string>(type: "text", nullable: true),
-                    DisciplineId = table.Column<Guid>(type: "uuid", nullable: true)
+                    DisciplineId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -93,7 +96,8 @@ namespace Quizzando.Migrations
                         name: "FK_Question_Discipline_DisciplineId",
                         column: x => x.DisciplineId,
                         principalTable: "Discipline",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
