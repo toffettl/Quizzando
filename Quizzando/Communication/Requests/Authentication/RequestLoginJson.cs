@@ -1,4 +1,4 @@
-﻿namespace Quizzando.Communication.Requests.User
+﻿namespace Quizzando.Communication.Requests.Authentication
 {
     public class RequestLoginJson
     {

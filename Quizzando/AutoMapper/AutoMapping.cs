@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using Quizzando.Communication.Requests.Authentication;
 using Quizzando.Communication.Requests.Course;
 using Quizzando.Communication.Requests.Disciplines;
 using Quizzando.Communication.Requests.Question;
 using Quizzando.Communication.Requests.User;
+using Quizzando.Communication.Responses.Authentication;
 using Quizzando.Communication.Responses.Course;
 using Quizzando.Communication.Responses.Disciplines;
 using Quizzando.Communication.Responses.Question;

@@ -1,4 +1,4 @@
-﻿namespace Quizzando.Communication.Responses.User
+﻿namespace Quizzando.Communication.Responses.Authentication
 {
     public class ResponseTokenJson
     {

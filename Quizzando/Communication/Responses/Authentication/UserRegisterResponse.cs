@@ -1,6 +1,6 @@
-﻿namespace Quizzando.Communication.Requests.User
+﻿namespace Quizzando.Communication.Responses.Authentication
 {
-    public class UserRegisterRequest
+    public class UserRegisterResponse
     {
         public string? Username { get; set; }
         public string? Password { get; set; }

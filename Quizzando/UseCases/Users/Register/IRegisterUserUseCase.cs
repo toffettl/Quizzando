@@ -1,5 +1,5 @@
-﻿using Quizzando.Communication.Requests.User;
-using Quizzando.Communication.Responses.User;
+﻿using Quizzando.Communication.Requests.Authentication;
+using Quizzando.Communication.Responses.Authentication;
 
 namespace Quizzando.UseCases.Users.Register
 {

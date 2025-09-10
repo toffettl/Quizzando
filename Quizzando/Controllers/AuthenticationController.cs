@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Quizzando.Communication.Requests.User;
-using Quizzando.Communication.Responses.User;
 using Quizzando.Communication.Responses;
 using Quizzando.UseCases.Users.Register;
 using Quizzando.UseCases.Users.Login;
+using Quizzando.Communication.Responses.Authentication;
+using Quizzando.Communication.Requests.Authentication;
 
 namespace Quizzando.Controllers
 {

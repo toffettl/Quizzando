@@ -1,5 +1,5 @@
-﻿using Quizzando.Communication.Requests.User;
-using Quizzando.Communication.Responses.User;
+﻿using Quizzando.Communication.Requests.Authentication;
+using Quizzando.Communication.Responses.Authentication;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Exception.ExceptionsBase;
 using Quizzando.Security.Cryptography;
