@@ -26,7 +26,7 @@ namespace Quizzando.UseCases.Courses.Create
         }
         public async Task<CreateCourseResponse> Execute(CreateCourseRequest request)
         {
-            await Validate(request);
+            Validate(request);
             
             var course = _mapper.Map<Course>(request);
 
@@ -37,7 +37,7 @@ namespace Quizzando.UseCases.Courses.Create
             return _mapper.Map<CreateCourseResponse>(course);
         }
 
-        private async Task Validate(CreateCourseRequest request)
+        private void Validate(CreateCourseRequest request)
         {
             var result = new CreateCourseValidator().Validate(request);
 
