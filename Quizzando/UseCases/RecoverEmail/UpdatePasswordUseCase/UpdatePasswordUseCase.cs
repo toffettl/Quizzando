@@ -41,7 +41,7 @@ public class UpdatePasswordUseCase : IUpdatePasswordUseCase
         if (user == null)
             throw new NotFoundException(ResourceErrorMessages.USER_NOT_FOUND);
 
-        user.Password = _passwordEncripter.Encrypt(newPassword);
+        user.password = _passwordEncripter.Encrypt(newPassword);
 
         _userUpdateOnlyRepository.Update(user);
         await _unitOfWork.Commit();

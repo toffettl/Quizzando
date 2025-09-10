@@ -38,7 +38,7 @@ namespace Quizzando.UseCases.Courses.Update
                 throw new NotFoundException(ResourceErrorMessages.COURSE_NOT_FOUND);
             }
 
-            course.CourseName = request.courseName;
+            course.course_name = request.courseName;
 
             await _courseWriteOnlyRepository.Update(course);
             await _unitOfWork.Commit();

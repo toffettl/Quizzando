@@ -33,7 +33,7 @@ namespace Quizzando.UseCases.Users.Login
                 throw new InvalidLoginException();
             }
 
-            var passwordMatch = _passwordEncripter.Verify(request.Password!, user.Password!);
+            var passwordMatch = _passwordEncripter.Verify(request.Password!, user.password!);
 
             if (passwordMatch == false)
             {

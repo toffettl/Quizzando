@@ -22,8 +22,8 @@ namespace Quizzando.Security.Tokens.AccessToken
         {
             var claims = new List<Claim>()
         {
-            new Claim(ClaimTypes.Email, user.Email!),
-            new Claim(ClaimTypes.Sid, user.Id.ToString())
+            new Claim(ClaimTypes.Email, user.email!),
+            new Claim(ClaimTypes.Sid, user.id.ToString())
         };
 
             var tokenDescriptor = new SecurityTokenDescriptor

@@ -10,9 +10,6 @@ namespace Quizzando.UseCases.Disciplines
         {
             RuleFor(discipline => discipline.Name)
                 .NotEmpty().WithMessage(ResourceErrorMessages.NAME_EMPTY);
-
-            RuleFor(discipline => discipline.Description)
-                .NotEmpty().WithMessage(ResourceErrorMessages.DESCRIPTION_EMPTY);
         }
     }
 }

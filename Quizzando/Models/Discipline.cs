@@ -2,16 +2,16 @@
 {
     public class Discipline
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid id { get; set; } = Guid.NewGuid();
 
-        public string? Name { get; set; }
+        public string? name { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime createdAt { get; set; } = DateTime.UtcNow;
+        public DateTime updatedAt { get; set; } = DateTime.UtcNow;
 
-        public Guid CoursesId { get; set; }
+        public Guid Courses_Id { get; set; }
 
-        public ICollection<Question> Questions { get; set; } = new List<Question>();
-        public ICollection<Course> Courses { get; set; } = new List<Course>();
+        public ICollection<Question> questions { get; set; } = new List<Question>();
+        public ICollection<Course> courses { get; set; } = new List<Course>();
     }
 }
