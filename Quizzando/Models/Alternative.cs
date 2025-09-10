@@ -1,8 +1,6 @@
-﻿using System;
-
-public class Class1
+﻿namespace Quizzando.Models
 {
-	public Class1()
-	{
-	}
+    public class Alternative
+    {
+    }
 }

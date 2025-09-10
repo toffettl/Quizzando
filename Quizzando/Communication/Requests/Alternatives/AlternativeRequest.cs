@@ -1,11 +1,6 @@
-﻿using System;
-
-public class AlternativeRequest
+﻿namespace Quizzando.Communication.Requests.Alternatives
 {
-	public AlternativeRequest()
-	{
-		public string? Text { get; set; }
-		public bool IsCorrect { get; set; }
-		public Guid QuestionId { get; set; }
-	}
+    public class AlternativeRequest
+    {
+    }
 }
