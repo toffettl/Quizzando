@@ -14,12 +14,12 @@ namespace Quizzando.Security.Tokens.AccessToken
         private readonly string _issuer;
         private readonly string _audience;
 
-        public AccessTokenGenerator(uint expirationTimeMinutes, string signingKey, string issuer, string audience)
+        public AccessTokenGenerator(IConfiguration configuration)
         {
-            _expirationTimeMinutes = expirationTimeMinutes;
-            _signingKey = signingKey;
-            _issuer = issuer;
-            _audience = audience;
+            _expirationTimeMinutes = uint.Parse(configuration["Jwt:AccessToken:ExpirationTimeMinutes"] ?? "20");
+            _signingKey = configuration["Jwt:Key"];
+            _issuer = configuration["Jwt:Issuer"];
+            _audience = configuration["Jwt:Audience"];
         }
 
         public string Generate(User user)
