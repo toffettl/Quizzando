@@ -16,18 +16,6 @@ namespace Quizzando.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        [HttpPost("register")]
-        [ProducesResponseType(typeof(UserRegisterResponse), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Register(
-            [FromServices] IRegisterUserUseCase useCase,
-            [FromBody] UserRegisterRequest request)
-        {
-            var response = await useCase.Execute(request);
-
-            return Ok(response);
-        }
-
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(UserGetByIdResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
@@ -73,18 +61,5 @@ namespace Quizzando.Controllers
             await useCase.Execute(id, userUpdateRequest);
             return NoContent();
         }
-
-        [HttpPost("login")]
-        [ProducesResponseType(typeof(Quizzando.Communication.Responses.ResponseTokenJson), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> Login(
-            [FromServices] IDoLoginUseCase useCase,
-            [FromBody] RequestLoginJson request)
-        {
-            var response = await useCase.Execute(request);
-
-            return Ok(response);
-        }
-
     }
 }
