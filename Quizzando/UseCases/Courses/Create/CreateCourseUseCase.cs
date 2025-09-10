@@ -24,7 +24,7 @@ namespace Quizzando.UseCases.Courses.Create
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
-        public async Task<CreateCourseResponse> Execute(CreateCourseRequest request)
+        public async Task<CourseResponseJson> Execute(CreateCourseRequest request)
         {
             await Validate(request);
             
@@ -34,7 +34,7 @@ namespace Quizzando.UseCases.Courses.Create
 
             await _unitOfWork.Commit();
 
-            return _mapper.Map<CreateCourseResponse>(course);
+            return _mapper.Map<CourseResponseJson>(course);
         }
 
         private async Task Validate(CreateCourseRequest request)

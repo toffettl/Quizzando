@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Quizzando.Models;
+using Quizzando.UseCases.Courses.Create;
 
 namespace Quizzando.DataAccess.Repositories.CourseRepositories
 {
@@ -35,6 +36,11 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
         public async Task<List<Course>> GetAllCourses()
         {
             return await _dbContext.Course.ToListAsync();
+        }
+
+        public async Task<List<Course>> GetCourseByDisciplineId(Guid disciplineId)
+        {
+            return await _dbContext.Course.Where(course => course.DisciplineId == disciplineId).ToListAsync();
         }
     }
 }

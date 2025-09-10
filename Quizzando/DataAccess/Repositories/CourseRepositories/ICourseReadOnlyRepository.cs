@@ -6,5 +6,6 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
     {
         Task<Course> GetCourseById(Guid id);
         Task<List<Course>> GetAllCourses();
+        Task<List<Course>> GetCourseByDisciplineId(Guid disciplineId);
     }
 }

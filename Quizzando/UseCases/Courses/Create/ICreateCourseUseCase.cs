@@ -5,6 +5,6 @@ namespace Quizzando.UseCases.Courses.Create
 {
     public interface ICreateCourseUseCase
     {
-        Task<CreateCourseResponse> Execute(CreateCourseRequest request);
+        Task<CourseResponseJson> Execute(CreateCourseRequest request);
     }
 }
