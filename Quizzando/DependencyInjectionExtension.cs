@@ -92,10 +92,16 @@ namespace Quizzando
 
         private static void AddToken(IServiceCollection services, IConfiguration configuration)
         {
-            var expirationTimeMinutes = Convert.ToUInt32(configuration["JWT_EXPIRATION_MINUTES"]);
-            var signingKey = configuration["JWT_SECRET"];
+            var expirationTimeMinutes = Convert.ToUInt32(configuration["Jwt:ExpirationMinutes"]);
+            var signingKey = configuration["Jwt:Key"]!;
+            var issuer = configuration["Jwt:Issuer"]!;
+            var audience = configuration["Jwt:Audience"]!;
 
-            services.AddScoped<IAccessTokenGenerator>(config => new AccessTokenGenerator(expirationTimeMinutes, signingKey!));
+            services.AddScoped<IAccessTokenGenerator>(
+                config => new AccessTokenGenerator(expirationTimeMinutes, signingKey, issuer, audience)
+            );
+
+            services.AddScoped<IRecoverTokenService, RecoverTokenService>();
         }
     }
 }
