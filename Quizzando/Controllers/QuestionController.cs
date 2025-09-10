@@ -11,7 +11,7 @@ using Quizzando.UseCases.Questions.UpdateById;
 
 namespace Quizzando.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/question")]
     [ApiController]
     public class QuestionController : ControllerBase
     {

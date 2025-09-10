@@ -11,7 +11,7 @@ using Quizzando.UseCases.Courses.Update;
 
 namespace Quizzando.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/course")]
     [ApiController]
     
     public class CourseController : ControllerBase

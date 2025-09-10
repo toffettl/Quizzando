@@ -12,7 +12,7 @@ using Quizzando.UseCases.Users.Update;
 
 namespace Quizzando.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : ControllerBase
     {

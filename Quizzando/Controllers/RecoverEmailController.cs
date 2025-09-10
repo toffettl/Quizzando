@@ -11,7 +11,7 @@ using Quizzando.UseCases.RecoverEmail.UpdatePasswordUseCase;
 
 namespace Quizzando.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/recover")]
     [ApiController]
     public class RecoverEmailController : ControllerBase
     {

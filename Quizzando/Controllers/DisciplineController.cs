@@ -10,7 +10,7 @@ using Quizzando.UseCases.Disciplines.Update;
 
 namespace Quizzando.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/discipline")]
     [ApiController]
     public class DisciplineController : ControllerBase
     {
