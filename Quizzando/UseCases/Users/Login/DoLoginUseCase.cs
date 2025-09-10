@@ -5,6 +5,7 @@ using Quizzando.Exception.ExceptionsBase;
 using Quizzando.Security.Cryptography;
 using Quizzando.Security.Tokens;
 using Quizzando.Security.Tokens.AccessToken;
+using Quizzando.Security.Tokens.RefreshToken;
 
 namespace Quizzando.UseCases.Users.Login
 {
@@ -13,15 +14,18 @@ namespace Quizzando.UseCases.Users.Login
         private readonly IUserReadOnlyRepository _repository;
         private readonly IPasswordEncripter _passwordEncripter;
         private readonly IAccessTokenGenerator _accessTokenGenerator;
+        private readonly IRefreshTokenGenerator _refreshTokenGenerator;
 
         public DoLoginUseCase(
             IUserReadOnlyRepository repository,
             IPasswordEncripter passwordEncripter,
-            IAccessTokenGenerator accessTokenGenerator)
+            IAccessTokenGenerator accessTokenGenerator,
+            IRefreshTokenGenerator refreshTokenGenerator)
         {
             _repository = repository;
             _passwordEncripter = passwordEncripter;
             _accessTokenGenerator = accessTokenGenerator;
+            _refreshTokenGenerator = refreshTokenGenerator;
         }
 
         public async Task<ResponseTokenJson> Execute(RequestLoginJson request)
@@ -42,7 +46,9 @@ namespace Quizzando.UseCases.Users.Login
 
             return new ResponseTokenJson
             {
-                Token = _accessTokenGenerator.Generate(user)
+                AccessToken = _accessTokenGenerator.Generate(user),
+                RefreshToken = _refreshTokenGenerator.Generate(user)
+
             };
         }
     }

@@ -33,6 +33,7 @@ using Quizzando.UseCases.Users.Register;
 using Quizzando.UseCases.Users.Update;
 using Quizzando.Security.Tokens.AccessToken;
 using Quizzando.Security.Tokens.RecoverToken;
+using Quizzando.Security.Tokens.RefreshToken;
 
 namespace Quizzando
 {
@@ -92,16 +93,12 @@ namespace Quizzando
 
         private static void AddToken(IServiceCollection services, IConfiguration configuration)
         {
-            var expirationTimeMinutes = Convert.ToUInt32(configuration["Jwt:ExpirationMinutes"]);
-            var signingKey = configuration["Jwt:Key"]!;
-            var issuer = configuration["Jwt:Issuer"]!;
-            var audience = configuration["Jwt:Audience"]!;
+            services.AddScoped<IAccessTokenGenerator, AccessTokenGenerator>();
 
-            services.AddScoped<IAccessTokenGenerator>(
-                config => new AccessTokenGenerator(expirationTimeMinutes, signingKey, issuer, audience)
-            );
+            services.AddScoped<IRefreshTokenGenerator, RefreshTokenGenerator>();
 
             services.AddScoped<IRecoverTokenService, RecoverTokenService>();
         }
+
     }
 }
