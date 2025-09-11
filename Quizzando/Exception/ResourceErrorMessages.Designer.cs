@@ -124,7 +124,7 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid password.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The password must contain capital letters, numbers and special characters.
         /// </summary>
         public static string INVALID_PASSWORD {
             get {
