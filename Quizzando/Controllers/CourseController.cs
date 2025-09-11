@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Quizzando.Communication.Requests.Course;
 using Quizzando.Communication.Responses;
@@ -13,7 +14,7 @@ namespace Quizzando.Controllers
 {
     [Route("api/course")]
     [ApiController]
-    
+    [Authorize]
     public class CourseController : ControllerBase
     {
         [HttpPost()]

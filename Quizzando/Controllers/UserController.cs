@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Quizzando.Communication.Requests.User;
 using Quizzando.Communication.Responses;
@@ -29,6 +30,7 @@ namespace Quizzando.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         [ProducesResponseType(typeof(UserGetByIdResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(
@@ -41,6 +43,7 @@ namespace Quizzando.Controllers
         }
 
         [HttpGet("all")]
+        [Authorize]
         [ProducesResponseType(typeof(List<UserGetByIdResponse>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll(
             [FromServices] IGetAllUsersUseCase useCase)
@@ -50,6 +53,7 @@ namespace Quizzando.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(
@@ -62,6 +66,7 @@ namespace Quizzando.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]

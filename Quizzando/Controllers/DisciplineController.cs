@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Quizzando.Communication.Requests.Disciplines;
 using Quizzando.Communication.Responses;
 using Quizzando.Communication.Responses.Disciplines;
@@ -12,6 +13,7 @@ namespace Quizzando.Controllers
 {
     [Route("api/discipline")]
     [ApiController]
+    [Authorize]
     public class DisciplineController : ControllerBase
     {
         [HttpPost]

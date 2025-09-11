@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Quizzando.Communication.Requests.Question;
 using Quizzando.Communication.Responses;
@@ -13,6 +14,7 @@ namespace Quizzando.Controllers
 {
     [Route("api/question")]
     [ApiController]
+    [Authorize]
     public class QuestionController : ControllerBase
     {
         [HttpPost]

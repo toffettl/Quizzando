@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Quizzando.Communication.Requests.Email;
@@ -13,6 +14,7 @@ namespace Quizzando.Controllers
 {
     [Route("api/recover")]
     [ApiController]
+    [Authorize]
     public class RecoverEmailController : ControllerBase
     {
         [HttpPost("send-code")]
