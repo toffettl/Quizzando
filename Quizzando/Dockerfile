@@ -7,9 +7,9 @@ WORKDIR /src
 
 COPY . .
 
-RUN dotnet restore src/Quizzando/Quizzando.csproj
+RUN dotnet restore Quizzando/Quizzando.csproj
 
-RUN dotnet publish src/Quizzando/Quizzando.csproj -c Release -o /app/publish
+RUN dotnet publish Quizzando/Quizzando.csproj -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
