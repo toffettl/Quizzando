@@ -2,9 +2,9 @@
 {
     public class Question
     {
-        public Guid id { get; set; }
-        public string? question_statement { get; set; }
-        public Guid dscipline_id { get; set; }
-        public Discipline? discipline { get; set; }
+        public Guid Id { get; set; }
+        public string? QuestionStatement { get; set; }
+        public Guid DisciplineId { get; set; }
+        public Discipline? Discipline { get; set; }
     }
 }
