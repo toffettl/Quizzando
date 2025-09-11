@@ -2,10 +2,10 @@
 nixPkgs = ["dotnet-sdk_8"]
 
 [phases.install]
-cmds = ["dotnet restore Quizzando/Quizzando.csproj"]
+cmds = ["dotnet restore Quizzando.sln"]
 
 [phases.build]
-cmds = ["dotnet publish Quizzando/Quizzando.csproj -c Release -o out"]
+cmds = ["dotnet publish Quizzando/Quizzando.csproj -c Release -o ./out"]
 
 [start]
-cmd = "dotnet out/Quizzando.dll"
+cmd = "dotnet ./out/Quizzando.dll"
