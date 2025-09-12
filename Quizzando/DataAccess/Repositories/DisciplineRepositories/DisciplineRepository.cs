@@ -16,36 +16,36 @@ namespace Quizzando.DataAccess.Repositories.DisciplineRepositories
 
         public async Task Add(Discipline discipline)
         {
-            await _dbContext.discipline.AddAsync(discipline);
+            await _dbContext.Discipline.AddAsync(discipline);
         }
 
         public async Task<bool?> Delete(Guid id)
         {
-            var result = await _dbContext.discipline.FirstOrDefaultAsync(discipline => discipline.id == id);
+            var result = await _dbContext.Discipline.FirstOrDefaultAsync(discipline => discipline.Id == id);
 
             if (result == null)
             {
                 return false;
             }
 
-            _dbContext.discipline.Remove(result);
+            _dbContext.Discipline.Remove(result);
 
             return true;
         }
 
         public async Task<List<Discipline>> GetAll()
         {
-            return await _dbContext.discipline.AsNoTracking().ToListAsync();
+            return await _dbContext.Discipline.AsNoTracking().ToListAsync();
         }
 
         public async Task<Discipline?> GetById(Guid id)
         {
-            return await _dbContext.discipline.AsNoTracking().FirstOrDefaultAsync(user => user.id == id);
+            return await _dbContext.Discipline.AsNoTracking().FirstOrDefaultAsync(user => user.Id == id);
         }
 
         public void Update(Discipline entity)
         {
-            _dbContext.discipline.Update(entity);
+            _dbContext.Discipline.Update(entity);
         }
     }
 }

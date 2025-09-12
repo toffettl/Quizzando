@@ -38,7 +38,7 @@ namespace Quizzando.UseCases.Disciplines.Update
             }
 
             _mapper.Map(request, discipline);
-            discipline.updatedAt = DateTime.UtcNow;
+            discipline.UpdatedAt = DateTime.UtcNow;
 
             _disciplineUpdateOnlyRepository.Update(discipline);
 

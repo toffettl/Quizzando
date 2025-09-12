@@ -29,7 +29,7 @@ namespace Quizzando.UseCases.Questions.Create
 
             var question = _mapper.Map<Question>(request);
 
-            question.id = Guid.NewGuid();
+            question.Id = Guid.NewGuid();
 
             await _questionWriteOnlyRepository.Add(question);
 

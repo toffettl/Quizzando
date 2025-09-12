@@ -15,32 +15,32 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
 
         public async Task Add(Course course)
         {
-            await _dbContext.course.AddAsync(course);
+            await _dbContext.Course.AddAsync(course);
         }
 
         public async Task Update(Course course)
         {
-            _dbContext.course.Update(course);
+            _dbContext.Course.Update(course);
         }
 
         public async Task Delete(Course course)
         {
-            _dbContext.course.Remove(course);
+            _dbContext.Course.Remove(course);
         }
 
         public async Task<Course> GetCourseById(Guid id)
         {
-            return await _dbContext.course.FirstAsync(course => course.id == id); 
+            return await _dbContext.Course.FirstAsync(course => course.Id == id); 
         }
 
         public async Task<List<Course>> GetAllCourses()
         {
-            return await _dbContext.course.ToListAsync();
+            return await _dbContext.Course.ToListAsync();
         }
 
         public async Task<List<Course>> GetCourseByDisciplineId(Guid disciplineId)
         {
-            return await _dbContext.course.Where(course => course.discipline_id == disciplineId).ToListAsync();
+            return await _dbContext.Course.Where(course => course.DisciplineId == disciplineId).ToListAsync();
         }
     }
 }

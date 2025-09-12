@@ -35,7 +35,7 @@ namespace Quizzando.UseCases.Users.Register
 
             var user = _mapper.Map<Models.User>(request);
 
-            user.password = _passwordEncripter.Encrypt(request.Password!);
+            user.Password = _passwordEncripter.Encrypt(request.Password!);
 
             await _userWriteOnlyRepostory.Add(user);
 
