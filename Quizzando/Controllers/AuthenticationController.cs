@@ -3,6 +3,7 @@ using Quizzando.Communication.Responses;
 using Quizzando.Communication.Responses.Authentication;
 using Quizzando.Communication.Requests.Authentication;
 using Quizzando.UseCases.Authentication.Login;
+using Quizzando.UseCases.Authentication.Refresh;
 using Quizzando.UseCases.Authentication.Register;
 
 namespace Quizzando.Controllers
@@ -24,7 +25,7 @@ namespace Quizzando.Controllers
         }
 
         [HttpPost("login")]
-        [ProducesResponseType(typeof(Quizzando.Communication.Responses.ResponseTokenJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Communication.Responses.ResponseTokenJson), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Login(
            [FromServices] IDoLoginUseCase useCase,
@@ -32,6 +33,17 @@ namespace Quizzando.Controllers
         {
             var response = await useCase.Execute(request);
 
+            return Ok(response);
+        }
+        
+        [HttpPost("refresh")]
+        [ProducesResponseType(typeof(Communication.Responses.ResponseTokenJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Refresh(
+            [FromServices] IRefreshTokenUseCase useCase,
+            [FromBody] RequestRefreshTokenJson request)
+        {
+            var response = await useCase.Execute(request);
             return Ok(response);
         }
     }
