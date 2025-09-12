@@ -1,9 +1,9 @@
-﻿using FluentValidation;
+﻿using System.Text.RegularExpressions;
+using FluentValidation;
 using FluentValidation.Validators;
 using Quizzando.Exception;
-using System.Text.RegularExpressions;
 
-namespace Quizzando.UseCases.Users.Register
+namespace Quizzando.UseCases.Authentication.Register
 {
     public class PasswordValidator<T> : PropertyValidator<T, string>
     {

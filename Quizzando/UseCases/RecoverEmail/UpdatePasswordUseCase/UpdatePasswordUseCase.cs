@@ -9,8 +9,8 @@ using Quizzando.UseCases.Users.Update;
 using Quizzando.Security.Cryptography;
 using Microsoft.AspNetCore.Identity.Data;
 using Quizzando.Communication.Requests.Email;
-using Quizzando.UseCases.Users.Register;
 using FluentValidation;
+using Quizzando.UseCases.Authentication.Register;
 
 namespace Quizzando.UseCases.RecoverEmail.UpdatePasswordUseCase;
 

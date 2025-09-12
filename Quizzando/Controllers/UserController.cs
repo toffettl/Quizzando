@@ -6,8 +6,6 @@ using Quizzando.Communication.Responses.User;
 using Quizzando.UseCases.Users.Delete;
 using Quizzando.UseCases.Users.Get.All;
 using Quizzando.UseCases.Users.Get.ById;
-using Quizzando.UseCases.Users.Login;
-using Quizzando.UseCases.Users.Register;
 using Quizzando.UseCases.Users.Update;
 
 namespace Quizzando.Controllers

@@ -28,12 +28,11 @@ using Quizzando.UseCases.Questions.Delete;
 using Quizzando.UseCases.Questions.GetAll;
 using Quizzando.UseCases.Questions.GetById;
 using Quizzando.UseCases.Questions.UpdateById;
-using Quizzando.UseCases.Users.Login;
-using Quizzando.UseCases.Users.Register;
 using Quizzando.UseCases.Users.Update;
 using Quizzando.Security.Tokens.AccessToken;
 using Quizzando.Security.Tokens.RecoverToken;
 using Quizzando.Security.Tokens.RefreshToken;
+using Quizzando.UseCases.Authentication.Register;
 
 namespace Quizzando
 {

@@ -5,7 +5,6 @@ using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Exception;
 using Quizzando.Exception.ExceptionsBase;
-using Quizzando.UseCases.Users.Register;
 
 namespace Quizzando.UseCases.Users.Update
 {

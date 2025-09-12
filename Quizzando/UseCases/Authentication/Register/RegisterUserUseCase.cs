@@ -8,7 +8,7 @@ using Quizzando.Exception;
 using Quizzando.Exception.ExceptionsBase;
 using Quizzando.Security.Cryptography;
 
-namespace Quizzando.UseCases.Users.Register
+namespace Quizzando.UseCases.Authentication.Register
 {
     public class RegisterUserUseCase : IRegisterUserUseCase
     {

@@ -2,7 +2,7 @@
 using Quizzando.Communication.Requests.Authentication;
 using Quizzando.Exception;
 
-namespace Quizzando.UseCases.Users.Register
+namespace Quizzando.UseCases.Authentication.Register
 {
     public class RegisterUserValidator : AbstractValidator<UserRegisterRequest>
     {

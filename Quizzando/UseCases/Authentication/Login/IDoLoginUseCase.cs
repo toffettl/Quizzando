@@ -1,8 +1,7 @@
 ﻿using Quizzando.Communication.Requests.Authentication;
 using Quizzando.Communication.Responses.Authentication;
-using Quizzando.Models;
 
-namespace Quizzando.UseCases.Users.Login
+namespace Quizzando.UseCases.Authentication.Login
 {
     public interface IDoLoginUseCase
     {

@@ -3,11 +3,10 @@ using Quizzando.Communication.Responses.Authentication;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Exception.ExceptionsBase;
 using Quizzando.Security.Cryptography;
-using Quizzando.Security.Tokens;
 using Quizzando.Security.Tokens.AccessToken;
 using Quizzando.Security.Tokens.RefreshToken;
 
-namespace Quizzando.UseCases.Users.Login
+namespace Quizzando.UseCases.Authentication.Login
 {
     public class DoLoginUseCase : IDoLoginUseCase
     {
