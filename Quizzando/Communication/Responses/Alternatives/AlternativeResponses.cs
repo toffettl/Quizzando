@@ -1,6 +1,6 @@
 namespace Quizzando.Communication.Responses.Alternatives
 {
-    public class AlternativeResponse
+    public class AlternativeResponses
     {
         public List<AlternativeResponse>? Alternatives { get; set; }
     }

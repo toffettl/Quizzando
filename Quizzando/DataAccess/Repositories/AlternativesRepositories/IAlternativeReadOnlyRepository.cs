@@ -1,6 +1,7 @@
 namespace Quizzando.DataAccess.Repositories.AlternativesRepositories
 {
-    using Quizzando.Domain.Entities;
+    using Quizzando.Models;
+
     public interface IAlternativeReadOnlyRepository
     {
         Task<Alternative?> GetById(Guid id);

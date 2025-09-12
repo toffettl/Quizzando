@@ -3,12 +3,18 @@ using Microsoft.EntityFrameworkCore;
 using Quizzando.AutoMapper;
 using Quizzando.DataAccess;
 using Quizzando.DataAccess.Repositories;
+using Quizzando.DataAccess.Repositories.AlternativesRepositories;
 using Quizzando.DataAccess.Repositories.CourseRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepository;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Security.Cryptography;
 using Quizzando.Security.Tokens;
+using Quizzando.UseCases.Alternative.Create;
+using Quizzando.UseCases.Alternative.Delete;
+using Quizzando.UseCases.Alternative.Get.All;
+using Quizzando.UseCases.Alternative.Get.ById;
+using Quizzando.UseCases.Alternative.Update;
 using Quizzando.UseCases.Courses.Create;
 using Quizzando.UseCases.Courses.Delete;
 using Quizzando.UseCases.Courses.GetAll;
@@ -55,6 +61,9 @@ namespace Quizzando
             services.AddScoped<IDisciplineReadOnlyRepository, DisciplineRepository>();
             services.AddScoped<IDisciplineWriteOnlyRepository, DisciplineRepository>();
             services.AddScoped<IDisciplineUpdateOnlyRepository, DisciplineRepository>();
+            services.AddScoped<IAlternativeReadOnlyRepository, AlternativeRepository>();
+            services.AddScoped<IAlternativeWriteOnlyRepository, AlternativeRepository>();
+            services.AddScoped<IAlternativeUpdateOnlyRepository, AlternativeRepository>();
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
@@ -83,6 +92,11 @@ namespace Quizzando
             services.AddScoped<IGetAllDisciplinesUseCase, GetAllDisciplinesUseCase>();
             services.AddScoped<IGetDisciplineByIdUseCase, GetDisciplineByIdUseCase>();
             services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
+            services.AddScoped<ICreateAlternativeUseCase, CreateAlternativeUseCase>();
+            services.AddScoped<IDeleteAlternativeUseCase, DeleteAlternativeUseCase>();
+            services.AddScoped<IGetAllAlternativesUseCase, GetAllAlternativesUseCase>();
+            services.AddScoped<IGetAlternativeByIdUseCase, GetAlternativeByIdUseCase>();
+            services.AddScoped<IUpdateAlternativeUseCase, UpdateAlternativeUseCase>();
             services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
             services.AddScoped<IPasswordEncripter, Security.Cryptography.BCrypto>();
             services.AddScoped<IAccessTokenGenerator>(provider =>

@@ -61,6 +61,15 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Alternative not found.
+        /// </summary>
+        public static string ALTERNATIVE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("ALTERNATIVE_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Course not found.
         /// </summary>
         public static string COURSE_NOT_FOUND {
@@ -124,7 +133,7 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid password.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The password must contain capital letters, numbers and special characters.
         /// </summary>
         public static string INVALID_PASSWORD {
             get {
@@ -165,6 +174,24 @@ namespace Quizzando.Exception {
         public static string QUESTION_STATEMENT_EMPTY {
             get {
                 return ResourceManager.GetString("QUESTION_STATEMENT_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Text field cannot be empty..
+        /// </summary>
+        public static string TEXT_EMPTY {
+            get {
+                return ResourceManager.GetString("TEXT_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Text exceeds the maximum allowed length..
+        /// </summary>
+        public static string TEXT_MAX_LENGTH {
+            get {
+                return ResourceManager.GetString("TEXT_MAX_LENGTH", resourceCulture);
             }
         }
         

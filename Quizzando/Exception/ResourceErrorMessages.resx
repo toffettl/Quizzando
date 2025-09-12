@@ -159,4 +159,13 @@
   <data name="COURSE_NOT_FOUND" xml:space="preserve">
     <value>Course not found</value>
   </data>
+  <data name="TEXT_EMPTY" xml:space="preserve">
+    <value>Text field cannot be empty.</value>
+  </data>
+  <data name="TEXT_MAX_LENGTH" xml:space="preserve">
+    <value>Text exceeds the maximum allowed length.</value>
+  </data>
+  <data name="ALTERNATIVE_NOT_FOUND" xml:space="preserve">
+    <value>Alternative not found</value>
+  </data>
 </root>

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using Quizzando.Communication.Requests.Alternatives;
 using Quizzando.Communication.Requests.Course;
 using Quizzando.Communication.Requests.Disciplines;
 using Quizzando.Communication.Requests.Question;
 using Quizzando.Communication.Requests.User;
+using Quizzando.Communication.Responses.Alternatives;
 using Quizzando.Communication.Responses.Course;
 using Quizzando.Communication.Responses.Disciplines;
 using Quizzando.Communication.Responses.Question;
@@ -26,6 +28,7 @@ namespace Quizzando.AutoMapper
             CreateMap<UserUpdateRequest, User>();
             CreateMap<DisciplineRequest, Discipline>();
             CreateMap<QuestionRequest, Question>();
+            CreateMap<AlternativeRequest, Alternative>();
         }
 
         private void ResponseToEntity()
@@ -39,6 +42,7 @@ namespace Quizzando.AutoMapper
             CreateMap<User, UserGetAllResponse>();
             CreateMap<Discipline, DisciplineResponse>();
             CreateMap<Question, QuestionResponse>();
+            CreateMap<Alternative, AlternativeResponse>();
         }
 
 

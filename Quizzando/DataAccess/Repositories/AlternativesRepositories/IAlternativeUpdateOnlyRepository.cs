@@ -1,6 +1,9 @@
-﻿namespace Quizzando.DataAccess.Repositories.AlternativesRepositories
+﻿using Quizzando.Models;
+
+namespace Quizzando.DataAccess.Repositories.AlternativesRepositories
 {
-    public class IAlternativeUpdateOnlyRepository
+    public interface IAlternativeUpdateOnlyRepository
     {
+        void Update(Alternative entity);
     }
 }
