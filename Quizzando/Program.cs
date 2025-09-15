@@ -1,12 +1,15 @@
+using DotNetEnv;
 using Quizzando;
 using Quizzando.AutoMapper;
 using Quizzando.DataAccess;
 using Quizzando.Exception.Filters;
 using Quizzando.Settings;
 
+Env.Load();
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration["ConnectionStrings:DefaultConnetion"] = Environment.GetEnvironmentVariable("DEFAULT_CONNETION");
+builder.Configuration["ConnectionStrings:DefaultConnection"] = Environment.GetEnvironmentVariable("DEFAULT_CONNECTION");
 
 builder.Services.AddControllers();
 
@@ -16,7 +19,7 @@ builder.Services.Configure<EmailSettings>(
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
+//builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
