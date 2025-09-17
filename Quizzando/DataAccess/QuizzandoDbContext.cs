@@ -11,8 +11,9 @@ namespace Quizzando.DataAccess
         }
 
         public DbSet<User> User {  get; set; }
-        public DbSet<Question> Question { get; set; }
         public DbSet<Discipline> Discipline { get; set; }
+        public DbSet<UserDiscipline> UserDiscipline { get; set; }
         public DbSet<Course> Course { get; set; }
+        public DbSet<Question> Question { get; set; }
     }
 }
