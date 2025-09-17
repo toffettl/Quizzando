@@ -25,14 +25,6 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddAutoMapper(typeof(AutoMapping));
 
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -42,6 +34,14 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
 
