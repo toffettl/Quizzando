@@ -77,29 +77,21 @@ namespace Quizzando
 
         private static void AddUseCases(this IServiceCollection services)
         {
-            services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
-            services.AddScoped<IGetUserByIdUseCase, GetUserByIdUseCase>();
-            services.AddScoped<ICreateCourseUseCase, CreateCourseUseCase>();
-            services.AddScoped<IGetCourseByIdUseCase, GetCourseByIdUseCase>();
-            services.AddScoped<IGetAllCoursesUseCase,  GetAllCoursesUseCase>();
-            services.AddScoped<IUpdateCourseUseCase, UpdateCourseUseCase>();
-            services.AddScoped<IDeleteCourseUseCase, DeleteCourseUseCase>();
-            services.AddScoped<IGetAllUsersUseCase, GetAllUsersUseCase>();
-            services.AddScoped<IDeleteUserUseCase, DeleteUserUseCase>();
-            services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();    
-            services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
-            services.AddScoped<ICreateDisciplineUseCase, CreateDisciplineUseCase>();
-            services.AddScoped<IDeleteDisciplineUseCase, DeleteDisciplineUseCase>();
-            services.AddScoped<IGetAllDisciplinesUseCase, GetAllDisciplinesUseCase>();
-            services.AddScoped<IGetDisciplineByIdUseCase, GetDisciplineByIdUseCase>();
-            services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
-            services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
-            services.AddScoped<IPasswordEncripter, Security.Cryptography.BCrypto>();
-            services.AddScoped<IAccessTokenGenerator>(provider =>
-            {
-                var configuration = provider.GetRequiredService<IConfiguration>();
-                var expirationTime = configuration.GetValue<uint>("JwtSettings:ExpirationTimeMinutes");
-                var signingKey = configuration.GetValue<string>("JwtSettings:SigningKey");
+            services.AddScoped<IRecoverTokenService, RecoverTokenService>();
+
+            services.AddScoped<IPasswordEncripter, Quizzando.Security.Cryptography.BCrypto>();
+
+            services.Scan(scan => scan
+                .FromAssembliesOf(typeof(IRegisterUserUseCase))
+                .AddClasses(classes => classes.Where(c => c.Name.EndsWith("UseCase")))
+                .AsImplementedInterfaces()
+                .WithScopedLifetime());
+        }
+
+        private static void AddToken(IServiceCollection services, IConfiguration configuration)
+        {
+            var signingKey = configuration["Jwt:Key"];
+            var expirationTimeMinutes = Convert.ToUInt32(configuration["Jwt:ExpirationMinutes"]);
 
             services.AddScoped<IAccessTokenGenerator>(config => new AccessTokenGenerator(expirationTimeMinutes, signingKey!));
         }
