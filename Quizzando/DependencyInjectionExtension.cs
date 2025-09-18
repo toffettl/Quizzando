@@ -95,11 +95,12 @@ namespace Quizzando
             services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
             services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
             services.AddScoped<IPasswordEncripter, Security.Cryptography.BCrypto>();
-            services.AddScoped<IAccessTokenGenerator>(provider =>
-            {
-                var configuration = provider.GetRequiredService<IConfiguration>();
-                var expirationTime = configuration.GetValue<uint>("JwtSettings:ExpirationTimeMinutes");
-                var signingKey = configuration.GetValue<string>("JwtSettings:SigningKey");
+        }
+
+        private static void AddToken(IServiceCollection services, IConfiguration configuration)
+        {
+            var signingKey = configuration["Jwt:Key"];
+            var expirationTimeMinutes = Convert.ToUInt32(configuration["Jwt:ExpirationMinutes"]);
 
             services.AddScoped<IAccessTokenGenerator>(config => new AccessTokenGenerator(expirationTimeMinutes, signingKey!));
         }
