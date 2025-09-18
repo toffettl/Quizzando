@@ -40,7 +40,7 @@ namespace Quizzando.UseCases.Courses.Update
 
             course.CourseName = request.courseName;
 
-            await _courseWriteOnlyRepository.Update(course);
+            _courseWriteOnlyRepository.Update(course);
             await _unitOfWork.Commit();
 
             return _mapper.Map<UpdateCourseResponse>(course);

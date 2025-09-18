@@ -36,6 +36,7 @@ public class RecoverTokenService : IRecoverTokenService
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!);
+
         try
         {
             tokenHandler.ValidateToken(token, new TokenValidationParameters

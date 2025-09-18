@@ -30,7 +30,7 @@ namespace Quizzando.UseCases.Courses.Delete
                 throw new NotFoundException(ResourceErrorMessages.COURSE_NOT_FOUND);
             }
             
-            await _courseWriteOnlyRepository.Delete(course);
+            _courseWriteOnlyRepository.Delete(course);
             
             await _unitOfWork.Commit();
         }
