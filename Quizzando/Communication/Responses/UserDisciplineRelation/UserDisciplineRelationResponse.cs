@@ -1,6 +1,6 @@
 ﻿namespace Quizzando.Communication.Responses.UserDiscipline
 {
-    public class UserDisciplineResponse
+    public class UserDisciplineRelationResponse
     {
         public Guid Id { get; set; }
         public long Time { get; set; }

@@ -3,8 +3,8 @@ using Quizzando.Communication.Responses.UserDiscipline;
 
 namespace Quizzando.UseCases.UserDisciplines.Create
 {
-    public interface ICreateUserDisciplineUseCase
+    public interface ICreateUserDisciplineUseCaseRelation
     {
-        Task<UserDisciplineResponse> Execute(UserDisciplineRequest request);
+        Task<UserDisciplineRelationResponse> Execute(UserDisciplineRelationRequest request);
     }
 }

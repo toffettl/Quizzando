@@ -1,6 +1,6 @@
 ﻿namespace Quizzando.Communication.Requests.UserDiscipline
 {
-    public class UserDisciplineRequest
+    public class UserDisciplineRelationRequest
     {
         public long Time { get; set; }
 

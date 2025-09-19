@@ -4,7 +4,7 @@ using Quizzando.Exception;
 
 namespace Quizzando.UseCases.UserDisciplines
 {
-    public class UserDisciplineValidator : AbstractValidator<UserDisciplineRequest>
+    public class UserDisciplineValidator : AbstractValidator<UserDisciplineRelationRequest>
     {
         public UserDisciplineValidator() 
         {

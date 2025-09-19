@@ -8,14 +8,14 @@ using Quizzando.Models;
 
 namespace Quizzando.UseCases.UserDisciplines.Create
 {
-    public class CreateUserDisciplineUseCase : ICreateUserDisciplineUseCase
+    public class CreateUserDisciplineUseCaseRelation : ICreateUserDisciplineUseCaseRelation
     {
-        private readonly IUserDisciplineWriteOnlyRepository _userDisciplineWriteOnlyRepository;
+        private readonly IUserDisciplineRelationWriteOnlyRepository _userDisciplineWriteOnlyRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CreateUserDisciplineUseCase(
-            IUserDisciplineWriteOnlyRepository userDisciplineWriteOnlyRepository,
+        public CreateUserDisciplineUseCaseRelation(
+            IUserDisciplineRelationWriteOnlyRepository userDisciplineWriteOnlyRepository,
             IUnitOfWork unitOfWork,
             IMapper mapper)
         {
@@ -24,20 +24,20 @@ namespace Quizzando.UseCases.UserDisciplines.Create
             _mapper = mapper;
         }
 
-        public async Task<UserDisciplineResponse> Execute(UserDisciplineRequest request)
+        public async Task<UserDisciplineRelationResponse> Execute(UserDisciplineRelationRequest request)
         {
             Validate(request);
 
-            var userDiscipline = _mapper.Map<UserDiscipline>(request);
+            var userDiscipline = _mapper.Map<UserDisciplineRelation>(request);
 
             await _userDisciplineWriteOnlyRepository.Add(userDiscipline);
 
             await _unitOfWork.Commit();
 
-            return _mapper.Map<UserDisciplineResponse>(userDiscipline);
+            return _mapper.Map<UserDisciplineRelationResponse>(userDiscipline);
         }
 
-        private void Validate(UserDisciplineRequest request)
+        private void Validate(UserDisciplineRelationRequest request)
         {
             var result = new UserDisciplineValidator().Validate(request);
 
