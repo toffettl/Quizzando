@@ -2,7 +2,7 @@
 
 namespace Quizzando.DataAccess.Repositories.UserDisciplineRepositories
 {
-    public interface IUserDisciplineReadOnlyRepository
+    public interface IUserDisciplineRelationReadOnlyRepository
     {
         Task<bool> ExistsWithUserIdAndDisciplineId(Guid userId, Guid disciplineId);
     }

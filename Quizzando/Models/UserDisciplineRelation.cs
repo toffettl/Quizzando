@@ -1,6 +1,6 @@
 ﻿namespace Quizzando.Models
 {
-    public class UserDiscipline
+    public class UserDisciplineRelation
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
