@@ -162,4 +162,7 @@
   <data name="TIME_NULL" xml:space="preserve">
     <value>Time null</value>
   </data>
+  <data name="USER_DISCIPLINE_RELATION_NOT_FOUND" xml:space="preserve">
+    <value>User discipline relation not found</value>
+  </data>
 </root>

@@ -187,6 +187,15 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a User discipline relation not found.
+        /// </summary>
+        public static string USER_DISCIPLINE_RELATION_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("USER_DISCIPLINE_RELATION_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a User not found.
         /// </summary>
         public static string USER_NOT_FOUND {
