@@ -27,7 +27,7 @@ namespace Quizzando.AutoMapper
             CreateMap<CreateCourseRequest, Course>();
             CreateMap<UpdateCourseRequest, Course>();
             CreateMap<DisciplineRequest, Discipline>();
-            CreateMap<UserDisciplineRequest, UserDiscipline>();
+            CreateMap<UserDisciplineRelationRequest, UserDisciplineRelation>();
             CreateMap<QuestionRequest, Question>();
         }
 
@@ -41,7 +41,7 @@ namespace Quizzando.AutoMapper
             CreateMap<Course, GetAllCoursesResponse>();
             CreateMap<Course, UpdateCourseResponse>();
             CreateMap<Discipline, DisciplineResponse>();
-            CreateMap<UserDiscipline, UserDisciplineResponse>();
+            CreateMap<UserDisciplineRelation, UserDisciplineRelationResponse>();
             CreateMap<Question, QuestionResponse>();
         }
 

@@ -19,7 +19,9 @@ using Quizzando.UseCases.Disciplines.Delete;
 using Quizzando.UseCases.Disciplines.GetAll;
 using Quizzando.UseCases.Disciplines.GetById;
 using Quizzando.UseCases.Disciplines.Update;
+using Quizzando.UseCases.UserDisciplineRelations.Delete;
 using Quizzando.UseCases.UserDisciplines.Create;
+using Quizzando.UseCases.UserDisciplines.GetByUserIdAndDisciplineId;
 using Quizzando.UseCases.Users.Delete;
 using Quizzando.UseCases.Users.Get.All;
 using Quizzando.UseCases.Users.Get.ById;
@@ -57,8 +59,8 @@ namespace Quizzando
             services.AddScoped<IDisciplineReadOnlyRepository, DisciplineRepository>();
             services.AddScoped<IDisciplineWriteOnlyRepository, DisciplineRepository>();
             services.AddScoped<IDisciplineUpdateOnlyRepository, DisciplineRepository>();
-            services.AddScoped<IUserDisciplineWriteOnlyRepository, UserDisciplineRepository>();
-            services.AddScoped<IUserDisciplineReadOnlyRepository, UserDisciplineRepository>();
+            services.AddScoped<IUserDisciplineRelationWriteOnlyRepository, UserDisciplineRelationRepository>();
+            services.AddScoped<IUserDisciplineRelationReadOnlyRepository, UserDisciplineRelationRepository>();
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
@@ -89,7 +91,8 @@ namespace Quizzando
             services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
             services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
             services.AddScoped<IPasswordEncripter, Security.Cryptography.BCrypto>();
-            services.AddScoped<ICreateUserDisciplineUseCase, CreateUserDisciplineUseCase>();
+            services.AddScoped<ICreateUserDisciplineUseCaseRelation, CreateUserDisciplineUseCaseRelation>();
+            services.AddScoped<IDeleteUserDisciplineRelationUseCase, DeleteUserDisciplineRelationUseCase>();
         }
 
         private static void AddToken(IServiceCollection services, IConfiguration configuration)
