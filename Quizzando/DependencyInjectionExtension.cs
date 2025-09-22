@@ -20,6 +20,7 @@ using Quizzando.UseCases.Disciplines.GetAll;
 using Quizzando.UseCases.Disciplines.GetById;
 using Quizzando.UseCases.Disciplines.Update;
 using Quizzando.UseCases.UserDisciplineRelations.Delete;
+using Quizzando.UseCases.UserDisciplineRelations.GetByUserId;
 using Quizzando.UseCases.UserDisciplines.Create;
 using Quizzando.UseCases.UserDisciplines.GetByUserIdAndDisciplineId;
 using Quizzando.UseCases.Users.Delete;
@@ -92,6 +93,7 @@ namespace Quizzando
             services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
             services.AddScoped<IPasswordEncripter, Security.Cryptography.BCrypto>();
             services.AddScoped<ICreateUserDisciplineUseCaseRelation, CreateUserDisciplineUseCaseRelation>();
+            services.AddScoped<IGetUserDiciplineRelationsByUserIdUseCase, GetUserDisciplineRelationsByUserIdUseCase>();
             services.AddScoped<IDeleteUserDisciplineRelationUseCase, DeleteUserDisciplineRelationUseCase>();
         }
 
