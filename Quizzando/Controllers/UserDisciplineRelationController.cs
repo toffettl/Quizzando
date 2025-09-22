@@ -2,6 +2,8 @@
 using Quizzando.Communication.Requests.UserDiscipline;
 using Quizzando.Communication.Responses;
 using Quizzando.Communication.Responses.UserDiscipline;
+using Quizzando.Communication.Responses.UserDisciplineRelation;
+using Quizzando.UseCases.UserDisciplineRelations.GetByUserId;
 using Quizzando.UseCases.UserDisciplines.Create;
 using Quizzando.UseCases.UserDisciplines.GetByUserIdAndDisciplineId;
 
@@ -19,6 +21,23 @@ namespace Quizzando.Controllers
             [FromBody] UserDisciplineRelationRequest request)
         {
             var response = await useCase.Execute(request);
+
+            return Ok(response);
+        }
+
+        [HttpGet("User/{userId}")]
+        [ProducesResponseType(typeof(UserDisciplineRelationResponses), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> GetByUserId(
+            [FromServices] IGetUserDiciplineRelationsByUserIdUseCase useCase,
+            [FromRoute] Guid userId)
+        {
+            var response = await useCase.Execute(userId);
+
+            if (response.UserDisciplineRelations!.Count == 0)
+            {
+                return NoContent();
+            }
 
             return Ok(response);
         }
