@@ -41,7 +41,14 @@ namespace Quizzando.DataAccess.Repositories.UserDisciplineRepositories
                 .AnyAsync(user => user.UserId == userId && user.DisciplineId == disciplineId);
         }
 
-        public async Task<List<UserDisciplineRelation>> GetUserDiciplineRelationsByUserId(Guid userId)
+        public async Task<List<UserDisciplineRelation>> GetUserDisciplineRelationsByDisciplineId(Guid disciplineId)
+        {
+            return await _dbContext.UserDisciplineRelation
+                .Where(udr => udr.DisciplineId == disciplineId)
+                .ToListAsync();
+        }
+
+        public async Task<List<UserDisciplineRelation>> GetUserDisciplineRelationsByUserId(Guid userId)
         {
             return await _dbContext.UserDisciplineRelation
                 .Where(udr => udr.UserId == userId)
