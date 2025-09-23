@@ -21,7 +21,7 @@ namespace Quizzando.UseCases.UserDisciplineRelations.GetByUserId
 
         public async Task<UserDisciplineRelationResponses> Execute(Guid userId)
         {
-            var userDisciplineRelations = await _userDisciplineRelationReadOnlyRepository.GetUserDiciplineRelationsByUserId(userId);
+            var userDisciplineRelations = await _userDisciplineRelationReadOnlyRepository.GetUserDisciplineRelationsByUserId(userId);
 
             return new UserDisciplineRelationResponses
             {
