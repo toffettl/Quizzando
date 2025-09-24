@@ -27,6 +27,7 @@ using Quizzando.UseCases.UserDisciplines.GetByUserIdAndDisciplineId;
 using Quizzando.UseCases.Users.Delete;
 using Quizzando.UseCases.Users.Get.All;
 using Quizzando.UseCases.Users.Get.ById;
+using Quizzando.UseCases.Users.GetByRanking;
 using Quizzando.UseCases.Users.Login;
 using Quizzando.UseCases.Users.Register;
 using Quizzando.UseCases.Users.Update;
@@ -83,8 +84,9 @@ namespace Quizzando
             services.AddScoped<IUpdateCourseUseCase, UpdateCourseUseCase>();
             services.AddScoped<IDeleteCourseUseCase, DeleteCourseUseCase>();
             services.AddScoped<IGetAllUsersUseCase, GetAllUsersUseCase>();
+            services.AddScoped<IGetUsersByRankingUseCase, GetUsersByRankingUseCase>();
             services.AddScoped<IDeleteUserUseCase, DeleteUserUseCase>();
-            services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();    
+            services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
             services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
             services.AddScoped<ICreateDisciplineUseCase, CreateDisciplineUseCase>();
             services.AddScoped<IDeleteDisciplineUseCase, DeleteDisciplineUseCase>();
