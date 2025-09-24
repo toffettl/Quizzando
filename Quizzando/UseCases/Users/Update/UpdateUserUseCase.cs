@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using FluentValidation.Results;
 using Quizzando.Communication.Requests.User;
 using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Exception;
+using Quizzando.Exception.ExceptionsBase;
+using Quizzando.UseCases.Users.Register;
 
 namespace Quizzando.UseCases.Users.Update
 {
@@ -27,11 +30,13 @@ namespace Quizzando.UseCases.Users.Update
 
         public async Task Execute(Guid id, UserUpdateRequest userUpdateRequest)
         {
+            Validate(userUpdateRequest);
+
             var user = await _userReadOnlyRepository.GetUserById(id);
 
             if (user == null)
             {
-                throw new DirectoryNotFoundException(ResourceErrorMessages.USER_NOT_FOUND);
+                throw new NotFoundException(ResourceErrorMessages.USER_NOT_FOUND);
             }
 
             _mapper.Map(userUpdateRequest, user);
@@ -39,6 +44,18 @@ namespace Quizzando.UseCases.Users.Update
             _userUpdateOnlyRepository.Update(user);
 
             await _unitOfWork.Commit();
+        }
+
+        private void Validate(UserUpdateRequest request)
+        {
+            var result = new UpdateUserValidator().Validate(request);
+
+            if (result.IsValid == false)
+            {
+                var errorMessages = result.Errors.Select(f => f.ErrorMessage).ToList();
+
+                throw new ErrorOnValidationException(errorMessages);
+            }
         }
     }
 }

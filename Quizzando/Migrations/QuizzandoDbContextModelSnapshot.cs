@@ -22,6 +22,86 @@ namespace Quizzando.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("CourseDiscipline", b =>
+                {
+                    b.Property<Guid>("CoursesId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("DisciplinesId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("CoursesId", "DisciplinesId");
+
+                    b.HasIndex("DisciplinesId");
+
+                    b.ToTable("CourseDiscipline");
+                });
+
+            modelBuilder.Entity("Quizzando.Models.Course", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CourseName")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("DisciplineId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Course");
+                });
+
+            modelBuilder.Entity("Quizzando.Models.Discipline", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CoursesId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("QuestionsId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Discipline");
+                });
+
+            modelBuilder.Entity("Quizzando.Models.Question", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("DisciplineId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("QuestionStatement")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DisciplineId");
+
+                    b.ToTable("Question");
+                });
+
             modelBuilder.Entity("Quizzando.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -46,6 +126,37 @@ namespace Quizzando.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("CourseDiscipline", b =>
+                {
+                    b.HasOne("Quizzando.Models.Course", null)
+                        .WithMany()
+                        .HasForeignKey("CoursesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Quizzando.Models.Discipline", null)
+                        .WithMany()
+                        .HasForeignKey("DisciplinesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Quizzando.Models.Question", b =>
+                {
+                    b.HasOne("Quizzando.Models.Discipline", "Discipline")
+                        .WithMany("Questions")
+                        .HasForeignKey("DisciplineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Discipline");
+                });
+
+            modelBuilder.Entity("Quizzando.Models.Discipline", b =>
+                {
+                    b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,6 +7,7 @@ namespace Quizzando.DataAccess.Repositories.UserRepositories
         Task<bool> ExistActiveUserWithEmail(string email);
         Task<User> GetUserById(Guid id);
         Task<List<User>> GetAllUsers();
+        Task<User?> GetByEmail(string email);
         Task<(List<User> Users, int TotalCount)> GetUsersByRanking(int page, int pageSize);
     }
 }

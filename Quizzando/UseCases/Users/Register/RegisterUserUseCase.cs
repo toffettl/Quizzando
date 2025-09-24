@@ -2,11 +2,11 @@
 using FluentValidation.Results;
 using Quizzando.Communication.Requests.User;
 using Quizzando.Communication.Responses.User;
-using Quizzando.DataAccess;
 using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Exception;
 using Quizzando.Exception.ExceptionsBase;
+using Quizzando.Security.Cryptography;
 
 namespace Quizzando.UseCases.Users.Register
 {
@@ -14,23 +14,28 @@ namespace Quizzando.UseCases.Users.Register
     {
         private readonly IUserReadOnlyRepository _userReadOnlyRepostory;
         private readonly IUserWriteOnlyRepository _userWriteOnlyRepostory;
+        private readonly IPasswordEncripter _passwordEncripter;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         public RegisterUserUseCase(IUserWriteOnlyRepository userWriteOnlyRepostory, 
             IMapper mapper, 
             IUnitOfWork unitOfWork,
-            IUserReadOnlyRepository userReadOnlyRepository)
+            IUserReadOnlyRepository userReadOnlyRepository,
+            IPasswordEncripter passwordEncripter)
         {
             _userWriteOnlyRepostory = userWriteOnlyRepostory;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _userReadOnlyRepostory = userReadOnlyRepository;
+            _passwordEncripter = passwordEncripter;
         }
         public async Task<UserRegisterResponse> Execute(UserRegisterRequest request)
         {
             await Validate(request);
 
             var user = _mapper.Map<Models.User>(request);
+
+            user.Password = _passwordEncripter.Encrypt(request.Password!);
 
             await _userWriteOnlyRepostory.Add(user);
 

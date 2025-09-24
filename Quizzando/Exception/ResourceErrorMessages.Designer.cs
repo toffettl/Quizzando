@@ -61,6 +61,33 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Course not found.
+        /// </summary>
+        public static string COURSE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("COURSE_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Description empty.
+        /// </summary>
+        public static string DESCRIPTION_EMPTY {
+            get {
+                return ResourceManager.GetString("DESCRIPTION_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Discipline not found.
+        /// </summary>
+        public static string DISCIPLINE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("DISCIPLINE_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Email already registered.
         /// </summary>
         public static string EMAIL_ALREADY_REGISTERED {
@@ -97,7 +124,7 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid password.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The password must contain capital letters, numbers and special characters.
         /// </summary>
         public static string INVALID_PASSWORD {
             get {
@@ -115,11 +142,56 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The name is too short.
+        /// </summary>
+        public static string NAME_TOO_SHORT {
+            get {
+                return ResourceManager.GetString("NAME_TOO_SHORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Question not found.
+        /// </summary>
+        public static string QUESTION_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("QUESTION_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Statement empty.
+        /// </summary>
+        public static string QUESTION_STATEMENT_EMPTY {
+            get {
+                return ResourceManager.GetString("QUESTION_STATEMENT_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Time null.
+        /// </summary>
+        public static string TIME_NULL {
+            get {
+                return ResourceManager.GetString("TIME_NULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Unknowm error.
         /// </summary>
         public static string UNKNOWM_ERROR {
             get {
                 return ResourceManager.GetString("UNKNOWM_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a User discipline relation not found.
+        /// </summary>
+        public static string USER_DISCIPLINE_RELATION_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("USER_DISCIPLINE_RELATION_NOT_FOUND", resourceCulture);
             }
         }
         
