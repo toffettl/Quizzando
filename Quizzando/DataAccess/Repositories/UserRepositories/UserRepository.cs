@@ -48,5 +48,21 @@ namespace Quizzando.DataAccess.Repositories.UserRepositories
         {
             _dbContext.User.Update(user);
         }
+
+        public async Task<(List<User> Users, int TotalCount)> GetUsersByRanking(int page, int pageSize)
+        {
+            var query = _dbContext.User
+                .AsNoTracking();
+
+            var totalCount = await query.CountAsync();
+
+            var users = await query
+                .OrderByDescending(u => u.Score)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (users, totalCount);
+        }
     }
 }
