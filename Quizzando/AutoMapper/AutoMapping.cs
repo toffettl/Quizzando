@@ -35,8 +35,6 @@ namespace Quizzando.AutoMapper
         {
             CreateMap<User, UserRegisterResponse>();
             CreateMap<User, UserGetByIdResponse>();
-            CreateMap<User, UserGetAllResponse>();
-            CreateMap<User, UserGetByRankingResponse>();
             CreateMap<Course, CreateCourseResponse>();
             CreateMap<Course, GetCourseByIdResponse>();
             CreateMap<Course, GetAllCoursesResponse>();
