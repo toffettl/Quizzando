@@ -43,9 +43,9 @@ namespace Quizzando.UseCases.Disciplines.Create
 
             if (result.IsValid == false)
             {
-                var erroMessages = result.Errors.Select(f => f.ErrorMessage).ToList();
+                var errorMessages = result.Errors.Select(f => f.ErrorMessage).ToList();
 
-                throw new ErrorOnValidationException(erroMessages);
+                throw new ErrorOnValidationException(errorMessages);
             }
         }
     }
