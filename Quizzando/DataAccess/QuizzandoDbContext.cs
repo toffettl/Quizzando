@@ -15,5 +15,6 @@ namespace Quizzando.DataAccess
         public DbSet<UserDisciplineRelation> UserDisciplineRelation { get; set; }
         public DbSet<Course> Course { get; set; }
         public DbSet<Question> Question { get; set; }
+        public DbSet<Answer> Answer { get; set; }
     }
 }

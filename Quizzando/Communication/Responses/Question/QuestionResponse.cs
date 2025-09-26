@@ -1,8 +1,11 @@
-﻿namespace Quizzando.Communication.Responses.Question
+﻿using Quizzando.Communication.Responses.Answer;
+
+namespace Quizzando.Communication.Responses.Question
 {
     public class QuestionResponse
     {
         public Guid Id { get; set; }
         public string? QuestionStatement { get; set; }
+        public List<ResponseAnswerJson> Answers { get; set; } = new();
     }
 }

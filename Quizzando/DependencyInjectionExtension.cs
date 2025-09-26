@@ -5,32 +5,13 @@ using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.CourseRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepository;
+using Quizzando.DataAccess.Repositories.QuestionRepositories;
 using Quizzando.DataAccess.Repositories.UserDisciplineRepositories;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Security.Cryptography;
 using Quizzando.Security.Tokens.AccessToken;
-using Quizzando.UseCases.Courses.Create;
-using Quizzando.UseCases.Courses.Delete;
-using Quizzando.UseCases.Courses.GetAll;
-using Quizzando.UseCases.Courses.GetById;
-using Quizzando.UseCases.Courses.Update;
-using Quizzando.UseCases.Disciplines.Create;
-using Quizzando.UseCases.Disciplines.Delete;
-using Quizzando.UseCases.Disciplines.GetAll;
-using Quizzando.UseCases.Disciplines.GetById;
-using Quizzando.UseCases.Disciplines.Update;
-using Quizzando.UseCases.UserDisciplineRelations.Delete;
-using Quizzando.UseCases.UserDisciplineRelations.GetByDisciplineId;
-using Quizzando.UseCases.UserDisciplineRelations.GetByUserId;
-using Quizzando.UseCases.UserDisciplines.Create;
-using Quizzando.UseCases.UserDisciplines.GetByUserIdAndDisciplineId;
-using Quizzando.UseCases.Users.Delete;
-using Quizzando.UseCases.Users.Get.All;
-using Quizzando.UseCases.Users.Get.ById;
-using Quizzando.UseCases.Users.GetByRanking;
-using Quizzando.UseCases.Users.Login;
+using Quizzando.Security.Tokens.RecoverToken;
 using Quizzando.UseCases.Users.Register;
-using Quizzando.UseCases.Users.Update;
 
 namespace Quizzando
 {
@@ -64,6 +45,9 @@ namespace Quizzando
             services.AddScoped<IDisciplineUpdateOnlyRepository, DisciplineRepository>();
             services.AddScoped<IUserDisciplineRelationWriteOnlyRepository, UserDisciplineRelationRepository>();
             services.AddScoped<IUserDisciplineRelationReadOnlyRepository, UserDisciplineRelationRepository>();
+            services.AddScoped<IQuestionReadOnlyRepository, QuestionRepository>();
+            services.AddScoped<IQuestionWriteOnlyRepository, QuestionRepository>();
+            services.AddScoped<IQuestionUpdateOnlyRepository, QuestionRepository>();
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
@@ -76,29 +60,21 @@ namespace Quizzando
 
         private static void AddUseCases(this IServiceCollection services)
         {
-            services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
-            services.AddScoped<IGetUserByIdUseCase, GetUserByIdUseCase>();
-            services.AddScoped<ICreateCourseUseCase, CreateCourseUseCase>();
-            services.AddScoped<IGetCourseByIdUseCase, GetCourseByIdUseCase>();
-            services.AddScoped<IGetAllCoursesUseCase,  GetAllCoursesUseCase>();
-            services.AddScoped<IUpdateCourseUseCase, UpdateCourseUseCase>();
-            services.AddScoped<IDeleteCourseUseCase, DeleteCourseUseCase>();
-            services.AddScoped<IGetAllUsersUseCase, GetAllUsersUseCase>();
-            services.AddScoped<IDeleteUserUseCase, DeleteUserUseCase>();
-            services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();    
-            services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
-            services.AddScoped<ICreateDisciplineUseCase, CreateDisciplineUseCase>();
-            services.AddScoped<IDeleteDisciplineUseCase, DeleteDisciplineUseCase>();
-            services.AddScoped<IGetAllDisciplinesUseCase, GetAllDisciplinesUseCase>();
-            services.AddScoped<IGetDisciplineByIdUseCase, GetDisciplineByIdUseCase>();
-            services.AddScoped<IUpdateDisciplineUseCase, UpdateDisciplineUseCase>();
-            services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
-            services.AddScoped<IPasswordEncripter, Security.Cryptography.BCrypto>();
-            services.AddScoped<IAccessTokenGenerator>(provider =>
-            {
-                var configuration = provider.GetRequiredService<IConfiguration>();
-                var expirationTime = configuration.GetValue<uint>("JwtSettings:ExpirationTimeMinutes");
-                var signingKey = configuration.GetValue<string>("JwtSettings:SigningKey");
+            services.AddScoped<IRecoverTokenService, RecoverTokenService>();
+
+            services.AddScoped<IPasswordEncripter, Quizzando.Security.Cryptography.BCrypto>();
+
+            services.Scan(scan => scan
+                .FromAssembliesOf(typeof(IRegisterUserUseCase))
+                .AddClasses(classes => classes.Where(c => c.Name.EndsWith("UseCase")))
+                .AsImplementedInterfaces()
+                .WithScopedLifetime());
+        }
+
+        private static void AddToken(IServiceCollection services, IConfiguration configuration)
+        {
+            var signingKey = configuration["Jwt:Key"];
+            var expirationTimeMinutes = Convert.ToUInt32(configuration["Jwt:ExpirationMinutes"]);
 
             services.AddScoped<IAccessTokenGenerator>(config => new AccessTokenGenerator(expirationTimeMinutes, signingKey!));
         }

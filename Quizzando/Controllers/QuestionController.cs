@@ -9,6 +9,7 @@ using Quizzando.UseCases.Questions.Delete;
 using Quizzando.UseCases.Questions.GetAll;
 using Quizzando.UseCases.Questions.GetById;
 using Quizzando.UseCases.Questions.GetQuestionsByDisciplineId;
+using Quizzando.UseCases.Questions.GetQuiz;
 using Quizzando.UseCases.Questions.UpdateById;
 
 namespace Quizzando.Controllers
@@ -92,6 +93,22 @@ namespace Quizzando.Controllers
             {
                 return NoContent();
             }
+
+            return Ok(response);
+        }
+
+        [HttpGet("quiz/{disciplineId}")]
+        [ProducesResponseType(typeof(ResponseQuizJson), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetRandomQuestionsByDiscipline(
+            [FromServices] IGetQuizUseCase useCase,
+            [FromRoute] Guid disciplineId)
+        {
+            var request = new RequestQuizJson
+            {
+                DisciplineId = disciplineId
+            };
+
+            var response = await useCase.ExecuteAsync(request);
 
             return Ok(response);
         }

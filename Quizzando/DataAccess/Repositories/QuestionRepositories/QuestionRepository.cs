@@ -46,6 +46,14 @@ namespace Quizzando.DataAccess.Repositories.QuestionRepositories
             return await _dbContext.Question.AsNoTracking().FirstOrDefaultAsync(q => q.Id == id);
         }
 
+        public async Task<List<Question>> GetQuiz(Guid disciplineId)
+        {
+            return await _dbContext.Question
+                .Include(q => q.Answers)
+                .Where(q => q.DisciplineId == disciplineId)
+                .ToListAsync();
+        }
+
         public void Update(Question question)
         {
             _dbContext.Question.Update(question);
