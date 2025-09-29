@@ -7,6 +7,7 @@ using Quizzando.Communication.Responses.User;
 using Quizzando.UseCases.Users.Delete;
 using Quizzando.UseCases.Users.Get.All;
 using Quizzando.UseCases.Users.Get.ById;
+using Quizzando.UseCases.Users.GetByRanking;
 using Quizzando.UseCases.Users.Login;
 using Quizzando.UseCases.Users.Register;
 using Quizzando.UseCases.Users.Update;
@@ -39,6 +40,19 @@ namespace Quizzando.Controllers
         {
             var response = await useCase.Execute(id);
 
+            return Ok(response);
+        }
+
+        [HttpGet("ranking")]
+        [ProducesResponseType(typeof(PagedResult<UserGetByRankingResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> GetByRanking(
+            [FromServices] IGetUsersByRankingUseCase useCase,
+            [FromQuery] int page,
+            [FromQuery] int pageSize)
+        {
+            var response = await useCase.Execute(page, pageSize);
+            
             return Ok(response);
         }
 

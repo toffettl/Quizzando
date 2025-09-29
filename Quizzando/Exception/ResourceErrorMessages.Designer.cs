@@ -169,11 +169,29 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Time null.
+        /// </summary>
+        public static string TIME_NULL {
+            get {
+                return ResourceManager.GetString("TIME_NULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Unknowm error.
         /// </summary>
         public static string UNKNOWM_ERROR {
             get {
                 return ResourceManager.GetString("UNKNOWM_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a User discipline relation not found.
+        /// </summary>
+        public static string USER_DISCIPLINE_RELATION_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("USER_DISCIPLINE_RELATION_NOT_FOUND", resourceCulture);
             }
         }
         

@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Quizzando.AutoMapper;
 using Quizzando.DataAccess;
 using Quizzando.DataAccess.Repositories;
@@ -7,32 +6,12 @@ using Quizzando.DataAccess.Repositories.CourseRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepository;
 using Quizzando.DataAccess.Repositories.QuestionRepositories;
+using Quizzando.DataAccess.Repositories.UserDisciplineRepositories;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Security.Cryptography;
-using Quizzando.Security.Tokens;
-using Quizzando.UseCases.Courses.Create;
-using Quizzando.UseCases.Courses.Delete;
-using Quizzando.UseCases.Courses.GetAll;
-using Quizzando.UseCases.Courses.GetById;
-using Quizzando.UseCases.Courses.Update;
-using Quizzando.UseCases.Disciplines.Create;
-using Quizzando.UseCases.Disciplines.Delete;
-using Quizzando.UseCases.Disciplines.GetAll;
-using Quizzando.UseCases.Disciplines.GetById;
-using Quizzando.UseCases.Disciplines.Update;
-using Quizzando.UseCases.Users.Delete;
-using Quizzando.UseCases.Users.Get.All;
-using Quizzando.UseCases.Users.Get.ById;
-using Quizzando.UseCases.Questions.Create;
-using Quizzando.UseCases.Questions.Delete;
-using Quizzando.UseCases.Questions.GetAll;
-using Quizzando.UseCases.Questions.GetById;
-using Quizzando.UseCases.Questions.UpdateById;
-using Quizzando.UseCases.Users.Login;
-using Quizzando.UseCases.Users.Register;
-using Quizzando.UseCases.Users.Update;
 using Quizzando.Security.Tokens.AccessToken;
 using Quizzando.Security.Tokens.RecoverToken;
+using Quizzando.UseCases.Users.Register;
 
 namespace Quizzando
 {
@@ -64,8 +43,10 @@ namespace Quizzando
             services.AddScoped<IDisciplineReadOnlyRepository, DisciplineRepository>();
             services.AddScoped<IDisciplineWriteOnlyRepository, DisciplineRepository>();
             services.AddScoped<IDisciplineUpdateOnlyRepository, DisciplineRepository>();
-            services.AddScoped<IQuestionWriteOnlyRepository, QuestionRepository>();
+            services.AddScoped<IUserDisciplineRelationWriteOnlyRepository, UserDisciplineRelationRepository>();
+            services.AddScoped<IUserDisciplineRelationReadOnlyRepository, UserDisciplineRelationRepository>();
             services.AddScoped<IQuestionReadOnlyRepository, QuestionRepository>();
+            services.AddScoped<IQuestionWriteOnlyRepository, QuestionRepository>();
             services.AddScoped<IQuestionUpdateOnlyRepository, QuestionRepository>();
         }
 

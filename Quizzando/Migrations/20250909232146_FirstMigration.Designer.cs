@@ -12,7 +12,7 @@ using Quizzando.DataAccess;
 namespace Quizzando.Migrations
 {
     [DbContext(typeof(QuizzandoDbContext))]
-    [Migration("20250828141222_FirstMigration")]
+    [Migration("20250909232146_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -49,6 +49,9 @@ namespace Quizzando.Migrations
                     b.Property<string>("CourseName")
                         .HasColumnType("text");
 
+                    b.Property<Guid>("DisciplineId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
                     b.ToTable("Course");
@@ -60,6 +63,9 @@ namespace Quizzando.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<Guid>("CoursesId")
+                        .HasColumnType("uuid");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -68,6 +74,9 @@ namespace Quizzando.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
+
+                    b.Property<Guid>("QuestionsId")
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -83,7 +92,7 @@ namespace Quizzando.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("DisciplineId")
+                    b.Property<Guid>("DisciplineId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("QuestionStatement")
@@ -141,7 +150,9 @@ namespace Quizzando.Migrations
                 {
                     b.HasOne("Quizzando.Models.Discipline", "Discipline")
                         .WithMany("Questions")
-                        .HasForeignKey("DisciplineId");
+                        .HasForeignKey("DisciplineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Discipline");
                 });

@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Quizzando.Communication.Requests.Question;
 using Quizzando.Communication.Responses;
+using Quizzando.Communication.Responses.Disciplines;
 using Quizzando.Communication.Responses.Question;
 using Quizzando.UseCases.Questions.Create;
 using Quizzando.UseCases.Questions.Delete;
 using Quizzando.UseCases.Questions.GetAll;
 using Quizzando.UseCases.Questions.GetById;
+using Quizzando.UseCases.Questions.GetQuestionsByDisciplineId;
+using Quizzando.UseCases.Questions.GetQuiz;
 using Quizzando.UseCases.Questions.UpdateById;
 
 namespace Quizzando.Controllers
@@ -77,6 +80,39 @@ namespace Quizzando.Controllers
             await useCase.Execute(id);
 
             return NoContent();
+        }
+
+        [HttpGet("discipline/{disciplineId}")]
+        [ProducesResponseType(typeof(QuestionsResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> GetByCourseId(
+            [FromServices] IGetQuestionsByDisplineIdUseCase useCase,
+            [FromRoute] Guid disciplineId)
+        {
+            var response = await useCase.Execute(disciplineId);
+
+            if (response.Questions?.Count == 0)
+            {
+                return NoContent();
+            }
+
+            return Ok(response);
+        }
+
+        [HttpGet("quiz/{disciplineId}")]
+        [ProducesResponseType(typeof(ResponseQuizJson), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetRandomQuestionsByDiscipline(
+            [FromServices] IGetQuizUseCase useCase,
+            [FromRoute] Guid disciplineId)
+        {
+            var request = new RequestQuizJson
+            {
+                DisciplineId = disciplineId
+            };
+
+            var response = await useCase.ExecuteAsync(request);
+
+            return Ok(response);
         }
     }
     
