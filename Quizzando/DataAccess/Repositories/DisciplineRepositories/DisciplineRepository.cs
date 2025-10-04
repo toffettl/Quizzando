@@ -4,12 +4,14 @@ using Quizzando.Models;
 
 namespace Quizzando.DataAccess.Repositories.DisciplineRepositories
 {
-    public class DisciplineRepository : IDisciplineWriteOnlyRepository, IDisciplineReadOnlyRepository, IDisciplineUpdateOnlyRepository
+    public class DisciplineRepository : 
+        IDisciplineWriteOnlyRepository, 
+        IDisciplineReadOnlyRepository, 
+        IDisciplineUpdateOnlyRepository
     {
         private readonly QuizzandoDbContext _dbContext;
 
-        public DisciplineRepository(
-            QuizzandoDbContext dbContext)
+        public DisciplineRepository(QuizzandoDbContext dbContext)
         {
             _dbContext = dbContext;
         }

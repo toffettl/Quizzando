@@ -4,8 +4,8 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
 {
     public interface ICourseReadOnlyRepository
     {
-        Task<Course> GetCourseById(Guid id);
+        Task<Course?> GetCourseById(Guid id);
         Task<List<Course>> GetAllCourses();
-        Task<List<Course>> GetCourseByDisciplineId(Guid disciplineId);
+        Task<List<Course>> GetCoursesByDisciplineId(Guid disciplineId);
     }
 }

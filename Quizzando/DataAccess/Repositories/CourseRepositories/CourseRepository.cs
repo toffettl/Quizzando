@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Quizzando.Models;
-using Quizzando.UseCases.Courses.Create;
 
 namespace Quizzando.DataAccess.Repositories.CourseRepositories
 {
-    public class CourseRepository : ICourseWriteOnlyRepository, ICourseReadOnlyRepository, ICourseUpdateOnlyRepository
+    public class CourseRepository : 
+        ICourseWriteOnlyRepository, 
+        ICourseReadOnlyRepository, 
+        ICourseUpdateOnlyRepository
     {
         private readonly QuizzandoDbContext _dbContext;
 
@@ -28,19 +30,29 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
             _dbContext.Course.Remove(course);
         }
 
-        public async Task<Course> GetCourseById(Guid id)
+        public async Task<Course?> GetCourseById(Guid id)
         {
-            return await _dbContext.Course.FirstAsync(course => course.Id == id); 
+            return await _dbContext.Course
+                .AsNoTracking()
+                .AsSplitQuery()
+                .Include(c => c.Disciplines)
+                .FirstOrDefaultAsync(course => course.Id == id); 
         }
 
         public async Task<List<Course>> GetAllCourses()
         {
-            return await _dbContext.Course.ToListAsync();
+            return await _dbContext.Course
+                .AsNoTracking()
+                .AsSplitQuery()
+                .Include(c => c.Disciplines)
+                .ToListAsync();
         }
 
-        public async Task<List<Course>> GetCourseByDisciplineId(Guid disciplineId)
+        public async Task<List<Course>> GetCoursesByDisciplineId(Guid disciplineId)
         {
-            return await _dbContext.Course.Where(course => course.DisciplineId == disciplineId).ToListAsync();
+            return await _dbContext.Course
+                .Where(c => c.Disciplines.Any(d => d.Id == disciplineId))
+                .ToListAsync();
         }
     }
 }
