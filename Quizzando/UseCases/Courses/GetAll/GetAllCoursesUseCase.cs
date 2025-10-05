@@ -31,7 +31,7 @@ namespace Quizzando.UseCases.Courses.GetAll
 
             return new GetAllCoursesResponse
             {
-                Courses = _mapper.Map<List<GetCourseByIdResponse>>(courses)
+                Courses = _mapper.Map<List<CourseResponse>>(courses)
             };
         }
     }

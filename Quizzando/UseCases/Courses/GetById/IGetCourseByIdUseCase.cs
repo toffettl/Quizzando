@@ -5,6 +5,6 @@ namespace Quizzando.UseCases.Courses.GetById
 {
     public interface IGetCourseByIdUseCase
     {
-        Task<GetCourseByIdResponse> Execute(Guid id);
+        Task<CourseResponse> Execute(Guid id);
     }
 }

@@ -8,9 +8,18 @@ namespace Quizzando.UseCases.Courses.Create
     {
         public CreateCourseValidator()
         {
-            RuleFor(course => course.courseName)
+            RuleFor(c => c.CourseName)
                 .NotEmpty().WithMessage(ResourceErrorMessages.NAME_EMPTY)
                 .MinimumLength(3).WithMessage(ResourceErrorMessages.NAME_TOO_SHORT);
+
+            RuleFor(c => c.Description)
+                .NotEmpty().WithMessage(ResourceErrorMessages.DESCRIPTION_EMPTY);
+
+            RuleFor(c => c.Category)
+                .IsInEnum().WithMessage(ResourceErrorMessages.CATEGORY_INVALID);
+
+            RuleFor(c => c.Rating)
+                .GreaterThanOrEqualTo(0).WithMessage(ResourceErrorMessages.RATING_INVALID);
         }
     }
 }

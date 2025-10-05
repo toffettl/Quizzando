@@ -5,6 +5,6 @@ namespace Quizzando.UseCases.Courses.Update
 {
     public interface IUpdateCourseUseCase
     {
-        Task<UpdateCourseResponse> Execute(Guid id, UpdateCourseRequest request);
+        Task Execute(Guid id, UpdateCourseRequest request);
     }
 }

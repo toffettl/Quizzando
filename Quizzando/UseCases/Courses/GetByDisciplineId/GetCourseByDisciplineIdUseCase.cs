@@ -20,16 +20,16 @@ namespace Quizzando.UseCases.Courses.GetByDisciplineId
             _mapper = mapper;
         }
 
-        public async Task<List<CourseResponseJson>> Execute(Guid disciplineId)
+        public async Task<List<CourseResponse>> Execute(Guid disciplineId)
         {
-            var courses = await _repository.GetCourseByDisciplineId(disciplineId);
+            var courses = await _repository.GetCoursesByDisciplineId(disciplineId);
 
             if( courses.Count == 0)
             {
                 throw new NotFoundException(ResourceErrorMessages.COURSE_NOT_FOUND);
             }
 
-            List<CourseResponseJson> responses = _mapper.Map<List<CourseResponseJson>>(courses);
+            List<CourseResponse> responses = _mapper.Map<List<CourseResponse>>(courses);
 
             return responses;
         }

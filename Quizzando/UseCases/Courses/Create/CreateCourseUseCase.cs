@@ -3,7 +3,6 @@ using Quizzando.Communication.Requests.Course;
 using Quizzando.Communication.Responses.Course;
 using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.CourseRepositories;
-using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Exception.ExceptionsBase;
 using Quizzando.Models;
 
@@ -15,7 +14,8 @@ namespace Quizzando.UseCases.Courses.Create
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateCourseUseCase(ICourseWriteOnlyRepository courseWriteOnlyRepository,
+        public CreateCourseUseCase(
+            ICourseWriteOnlyRepository courseWriteOnlyRepository,
             IMapper mapper,
             IUnitOfWork unitOfWork
         )
@@ -24,7 +24,7 @@ namespace Quizzando.UseCases.Courses.Create
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
-        public async Task<CourseResponseJson> Execute(CreateCourseRequest request)
+        public async Task<CourseResponse> Execute(CreateCourseRequest request)
         {
             Validate(request);
             
@@ -34,7 +34,7 @@ namespace Quizzando.UseCases.Courses.Create
 
             await _unitOfWork.Commit();
 
-            return _mapper.Map<CourseResponseJson>(course);
+            return _mapper.Map<CourseResponse>(course);
         }
 
         private void Validate(CreateCourseRequest request)

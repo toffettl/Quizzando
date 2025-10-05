@@ -20,7 +20,7 @@ namespace Quizzando.Controllers
     public class CourseController : ControllerBase
     {
         [HttpPost()]
-        [ProducesResponseType(typeof(CourseResponseJson), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CourseResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
 
         public async Task<IActionResult> CreateCourse(
@@ -33,7 +33,7 @@ namespace Quizzando.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(GetCourseByIdResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CourseResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
 
         public async Task<IActionResult> GetCourseById([FromServices] IGetCourseByIdUseCase useCase,
@@ -59,7 +59,7 @@ namespace Quizzando.Controllers
 
 
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(UpdateCourseResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateCourse(
             [FromServices] IUpdateCourseUseCase useCase,
@@ -67,9 +67,9 @@ namespace Quizzando.Controllers
             [FromBody] UpdateCourseRequest request
         )
         {
-            var response = await useCase.Execute(id, request);
+            await useCase.Execute(id, request);
             
-            return Ok(response);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
@@ -84,7 +84,7 @@ namespace Quizzando.Controllers
         }
 
         [HttpGet("discipline/{id}")]
-        [ProducesResponseType(typeof(CourseResponseJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CourseResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetCourseByDisciplineId([FromServices] IGetCourseByDisciplineIdUseCase useCase,
             [FromRoute] Guid disciplineId

@@ -38,9 +38,9 @@ namespace Quizzando.AutoMapper
         {
             CreateMap<User, UserRegisterResponse>();
             CreateMap<User, UserGetByIdResponse>();
-            CreateMap<Course, GetCourseByIdResponse>();
+            CreateMap<Course, CourseResponse>()
+                .ForMember(dest => dest.Disciplines, opt => opt.MapFrom(src => src.Disciplines.Select(d => d.Id)));
             CreateMap<Course, GetAllCoursesResponse>();
-            CreateMap<Course, UpdateCourseResponse>();
             CreateMap<Discipline, DisciplineResponse>();
             CreateMap<UserDisciplineRelation, UserDisciplineRelationResponse>();
             CreateMap<Question, QuestionResponse>();
