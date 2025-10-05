@@ -61,6 +61,15 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Category invalid.
+        /// </summary>
+        public static string CATEGORY_INVALID {
+            get {
+                return ResourceManager.GetString("CATEGORY_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Course not found.
         /// </summary>
         public static string COURSE_NOT_FOUND {
@@ -169,6 +178,15 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Rating invalid.
+        /// </summary>
+        public static string RATING_INVALID {
+            get {
+                return ResourceManager.GetString("RATING_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Time null.
         /// </summary>
         public static string TIME_NULL {
@@ -178,11 +196,11 @@ namespace Quizzando.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Unknowm error.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Unknown error.
         /// </summary>
-        public static string UNKNOWM_ERROR {
+        public static string UNKNOWN_ERROR {
             get {
-                return ResourceManager.GetString("UNKNOWM_ERROR", resourceCulture);
+                return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
             }
         }
         

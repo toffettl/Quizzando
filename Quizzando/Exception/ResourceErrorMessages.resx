@@ -138,9 +138,6 @@
   <data name="QUESTION_STATEMENT_EMPTY" xml:space="preserve">
     <value>Statement empty</value>
   </data>
-  <data name="UNKNOWM_ERROR" xml:space="preserve">
-    <value>Unknowm error</value>
-  </data>
   <data name="USER_NOT_FOUND" xml:space="preserve">
     <value>User not found</value>
   </data>
@@ -164,5 +161,14 @@
   </data>
   <data name="USER_DISCIPLINE_RELATION_NOT_FOUND" xml:space="preserve">
     <value>User discipline relation not found</value>
+  </data>
+  <data name="UNKNOWN_ERROR" xml:space="preserve">
+    <value>Unknown error</value>
+  </data>
+  <data name="CATEGORY_INVALID" xml:space="preserve">
+    <value>Category invalid</value>
+  </data>
+  <data name="RATING_INVALID" xml:space="preserve">
+    <value>Rating invalid</value>
   </data>
 </root>
