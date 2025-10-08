@@ -47,7 +47,8 @@ builder.Services.AddSwaggerGen(c =>
         { securityScheme, Array.Empty<string>() }
     });
 });
-builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
+
+//builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
 builder.Services.AddInfrastructure(builder.Configuration);
 

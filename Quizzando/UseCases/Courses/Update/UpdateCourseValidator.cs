@@ -8,7 +8,7 @@ namespace Quizzando.UseCases.Courses.Update
     {
         public UpdateCourseValidator()
         {
-            RuleFor(course => course.courseName)
+            RuleFor(course => course.CourseName)
                 .NotEmpty().WithMessage(ResourceErrorMessages.NAME_EMPTY)
                 .MinimumLength(3).WithMessage(ResourceErrorMessages.NAME_TOO_SHORT);
         }

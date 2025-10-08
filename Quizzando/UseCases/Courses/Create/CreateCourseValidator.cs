@@ -8,7 +8,7 @@ namespace Quizzando.UseCases.Courses.Create
     {
         public CreateCourseValidator()
         {
-            RuleFor(course => course.courseName)
+            RuleFor(course => course.CourseName)
                 .NotEmpty().WithMessage(ResourceErrorMessages.NAME_EMPTY)
                 .MinimumLength(3).WithMessage(ResourceErrorMessages.NAME_TOO_SHORT);
         }

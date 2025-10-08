@@ -37,10 +37,5 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
         {
             return await _dbContext.Course.ToListAsync();
         }
-
-        public async Task<List<Course>> GetCourseByDisciplineId(Guid disciplineId)
-        {
-            return await _dbContext.Course.Where(course => course.DisciplineId == disciplineId).ToListAsync();
-        }
     }
 }

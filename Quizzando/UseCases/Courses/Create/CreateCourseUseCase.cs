@@ -29,7 +29,8 @@ namespace Quizzando.UseCases.Courses.Create
             Validate(request);
             
             var course = _mapper.Map<Course>(request);
-
+            course.UpdatedAt = DateTime.UtcNow;
+            course.CreatedAt = DateTime.UtcNow;
             await _courseWriteOnlyRepository.Add(course);
 
             await _unitOfWork.Commit();
