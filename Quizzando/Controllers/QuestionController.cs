@@ -17,7 +17,6 @@ namespace Quizzando.Controllers
 {
     [Route("api/question")]
     [ApiController]
-    [Authorize]
     public class QuestionController : ControllerBase
     {
         [HttpPost]
@@ -99,6 +98,7 @@ namespace Quizzando.Controllers
             return Ok(response);
         }
 
+        [Authorize]
         [HttpGet("quiz/{disciplineId}")]
         [ProducesResponseType(typeof(ResponseQuizJson), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetRandomQuestionsByDiscipline(

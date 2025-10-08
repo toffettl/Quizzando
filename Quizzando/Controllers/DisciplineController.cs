@@ -13,7 +13,6 @@ namespace Quizzando.Controllers
 {
     [Route("api/discipline")]
     [ApiController]
-    [Authorize]
     public class DisciplineController : ControllerBase
     {
         [HttpPost]

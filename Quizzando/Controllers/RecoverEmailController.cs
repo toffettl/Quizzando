@@ -14,7 +14,6 @@ namespace Quizzando.Controllers
 {
     [Route("api/recover")]
     [ApiController]
-    [Authorize]
     public class RecoverEmailController : ControllerBase
     {
         [HttpPost("send-code")]
