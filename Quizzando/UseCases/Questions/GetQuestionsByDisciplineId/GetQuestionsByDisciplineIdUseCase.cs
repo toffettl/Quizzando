@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Quizzando.Communication.Responses.Disciplines;
 using Quizzando.Communication.Responses.Question;
 using Quizzando.DataAccess.Repositories.DisciplineRepositories;
 using Quizzando.DataAccess.Repositories.QuestionRepositories;

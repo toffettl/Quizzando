@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Quizzando.Communication.Requests.Question;
 using Quizzando.Communication.Responses;
-using Quizzando.Communication.Responses.Disciplines;
 using Quizzando.Communication.Responses.Question;
 using Quizzando.UseCases.Questions.Create;
 using Quizzando.UseCases.Questions.Delete;
