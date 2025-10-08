@@ -1,4 +1,4 @@
-﻿using Quizzando.Communication.Responses.Disciplines;
+﻿using Quizzando.Communication.Responses.Course.Discipline;
 
 namespace Quizzando.UseCases.Disciplines.GetAll
 {

@@ -6,7 +6,7 @@ using Quizzando.Communication.Requests.User;
 using Quizzando.Communication.Requests.UserDiscipline;
 using Quizzando.Communication.Responses.Answer;
 using Quizzando.Communication.Responses.Course;
-using Quizzando.Communication.Responses.Disciplines;
+using Quizzando.Communication.Responses.Course.Discipline;
 using Quizzando.Communication.Responses.Question;
 using Quizzando.Communication.Responses.User;
 using Quizzando.Communication.Responses.UserDiscipline;

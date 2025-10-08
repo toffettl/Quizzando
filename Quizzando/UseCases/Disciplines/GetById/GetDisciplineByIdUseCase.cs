@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Quizzando.Communication.Responses.Disciplines;
+using Quizzando.Communication.Responses.Course.Discipline;
 using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepositories;
 using Quizzando.Exception;

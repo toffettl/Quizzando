@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Quizzando.Communication.Requests.Disciplines;
-using Quizzando.Communication.Responses.Disciplines;
+using Quizzando.Communication.Responses.Course.Discipline;
 using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepository;
 using Quizzando.Exception.ExceptionsBase;
