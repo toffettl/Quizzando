@@ -30,8 +30,7 @@ namespace Quizzando.AutoMapper
             CreateMap<DisciplineRequest, Discipline>();
             CreateMap<UserDisciplineRelationRequest, UserDisciplineRelation>();
             CreateMap<QuestionRequest, Question>();
-            CreateMap<Question, QuestionResponse>();
-            CreateMap<Answer, ResponseAnswerJson>();
+            CreateMap<AnswerRequest, Answer>();
         }
 
         private void ResponseToEntity()
@@ -45,6 +44,7 @@ namespace Quizzando.AutoMapper
             CreateMap<Discipline, DisciplineResponse>();
             CreateMap<UserDisciplineRelation, UserDisciplineRelationResponse>();
             CreateMap<Question, QuestionResponse>();
+            CreateMap<Answer, ResponseAnswerJson>();
         }
 
 
