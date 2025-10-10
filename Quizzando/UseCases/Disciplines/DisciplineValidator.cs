@@ -8,7 +8,7 @@ namespace Quizzando.UseCases.Disciplines
     {
         public DisciplineValidator()
         {
-            RuleFor(discipline => discipline.Name)
+            RuleFor(discipline => discipline.DisciplineName)
                 .NotEmpty().WithMessage(ResourceErrorMessages.NAME_EMPTY);
         }
     }

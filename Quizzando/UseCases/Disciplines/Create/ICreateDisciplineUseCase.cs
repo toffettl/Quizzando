@@ -1,5 +1,5 @@
 ﻿using Quizzando.Communication.Requests.Disciplines;
-using Quizzando.Communication.Responses.Course.Discipline;
+using Quizzando.Communication.Responses.Discipline;
 
 namespace Quizzando.UseCases.Disciplines.Create
 {

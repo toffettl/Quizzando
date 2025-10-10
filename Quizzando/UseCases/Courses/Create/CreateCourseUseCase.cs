@@ -3,7 +3,6 @@ using Quizzando.Communication.Requests.Course;
 using Quizzando.Communication.Responses.Course;
 using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.CourseRepositories;
-using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Exception.ExceptionsBase;
 using Quizzando.Models;
 
@@ -29,8 +28,7 @@ namespace Quizzando.UseCases.Courses.Create
             Validate(request);
             
             var course = _mapper.Map<Course>(request);
-            course.UpdatedAt = DateTime.UtcNow;
-            course.CreatedAt = DateTime.UtcNow;
+
             await _courseWriteOnlyRepository.Add(course);
 
             await _unitOfWork.Commit();

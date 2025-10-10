@@ -32,7 +32,7 @@ namespace Quizzando.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(GetCourseByIdResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CourseResponseJson), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
 
         public async Task<IActionResult> GetCourseById([FromServices] IGetCourseByIdUseCase useCase,
@@ -58,7 +58,7 @@ namespace Quizzando.Controllers
 
 
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(UpdateCourseResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CourseResponseJson), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateCourse(
             [FromServices] IUpdateCourseUseCase useCase,

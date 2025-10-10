@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Quizzando.Communication.Requests.Disciplines;
 using Quizzando.Communication.Responses;
-using Quizzando.Communication.Responses.Course.Discipline;
+using Quizzando.Communication.Responses.Discipline;
 using Quizzando.UseCases.Disciplines.Create;
 using Quizzando.UseCases.Disciplines.Delete;
 using Quizzando.UseCases.Disciplines.GetAll;

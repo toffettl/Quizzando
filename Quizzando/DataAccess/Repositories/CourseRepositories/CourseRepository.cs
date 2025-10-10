@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Quizzando.Models;
-using Quizzando.UseCases.Courses.Create;
 
 namespace Quizzando.DataAccess.Repositories.CourseRepositories
 {
-    public class CourseRepository : ICourseWriteOnlyRepository, ICourseReadOnlyRepository, ICourseUpdateOnlyRepository
+    public class CourseRepository : 
+        ICourseWriteOnlyRepository, 
+        ICourseReadOnlyRepository, 
+        ICourseUpdateOnlyRepository
     {
         private readonly QuizzandoDbContext _dbContext;
 
@@ -30,12 +32,20 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
 
         public async Task<Course> GetCourseById(Guid id)
         {
-            return await _dbContext.Course.FirstAsync(course => course.Id == id); 
+            return await _dbContext.Course
+                .AsNoTracking()
+                .AsSplitQuery()
+                .Include(c => c.Disciplines)
+                .FirstAsync(course => course.Id == id); 
         }
 
         public async Task<List<Course>> GetAllCourses()
         {
-            return await _dbContext.Course.ToListAsync();
+            return await _dbContext.Course
+                .AsNoTracking()
+                .AsSplitQuery()
+                .Include(c => c.Disciplines)    
+                .ToListAsync();
         }
     }
 }
