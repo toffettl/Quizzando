@@ -1,4 +1,4 @@
-﻿namespace Quizzando.Communication.Responses.Course.Discipline
+﻿namespace Quizzando.Communication.Responses.Discipline
 {
     public class DisciplineResponses
     {

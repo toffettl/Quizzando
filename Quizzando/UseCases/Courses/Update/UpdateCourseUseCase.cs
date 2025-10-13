@@ -27,7 +27,7 @@ namespace Quizzando.UseCases.Courses.Update
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<UpdateCourseResponse> Execute(Guid id, UpdateCourseRequest request)
+        public async Task<CourseResponseJson> Execute(Guid id, UpdateCourseRequest request)
         {
             await Validate(request);
 
@@ -43,7 +43,7 @@ namespace Quizzando.UseCases.Courses.Update
             _courseWriteOnlyRepository.Update(course);
             await _unitOfWork.Commit();
 
-            return _mapper.Map<UpdateCourseResponse>(course);
+            return _mapper.Map<CourseResponseJson>(course);
         }
 
         private async Task Validate(UpdateCourseRequest request)

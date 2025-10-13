@@ -4,7 +4,7 @@ namespace Quizzando.Communication.Requests.Disciplines
 {
     public class DisciplineRequest
     {
-        public string? Name { get; set; }
+        public string? DisciplineName { get; set; }
         public string? Description { get; set; }
         public Guid CourseId { get; set; }
         public int Difficulty { get; set; }

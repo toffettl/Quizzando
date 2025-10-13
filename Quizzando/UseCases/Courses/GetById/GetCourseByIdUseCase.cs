@@ -19,7 +19,7 @@ namespace Quizzando.UseCases.Courses.GetById
             _mapper = mapper;
         }
         
-        public async Task<GetCourseByIdResponse> Execute(Guid id)
+        public async Task<CourseResponseJson> Execute(Guid id)
         {
             var course = await _courseReadOnlyRepository.GetCourseById(id);
 
@@ -28,7 +28,7 @@ namespace Quizzando.UseCases.Courses.GetById
                 throw new NotFoundException(ResourceErrorMessages.COURSE_NOT_FOUND);
             }
 
-            return _mapper.Map<GetCourseByIdResponse>(course);
+            return _mapper.Map<CourseResponseJson>(course);
         }
     }
 }

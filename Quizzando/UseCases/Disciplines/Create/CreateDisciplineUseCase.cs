@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Quizzando.Communication.Requests.Disciplines;
-using Quizzando.Communication.Responses.Course.Discipline;
+using Quizzando.Communication.Responses.Discipline;
 using Quizzando.DataAccess.Repositories;
 using Quizzando.DataAccess.Repositories.DisciplineRepository;
 using Quizzando.Exception.ExceptionsBase;
@@ -31,6 +31,7 @@ namespace Quizzando.UseCases.Disciplines.Create
             var discipline = _mapper.Map<Discipline>(request);
 
             await _disciplineWriteOnlyRepository.Add(discipline);
+
             await _unitOfWork.Commit();
 
             return _mapper.Map<DisciplineResponse>(discipline);
