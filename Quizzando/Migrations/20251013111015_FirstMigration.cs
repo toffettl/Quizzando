@@ -17,7 +17,13 @@ namespace Quizzando.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     CourseName = table.Column<string>(type: "text", nullable: true),
-                    DisciplineId = table.Column<Guid>(type: "uuid", nullable: false)
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    BackgroundImage = table.Column<string>(type: "text", nullable: true),
+                    Category = table.Column<int>(type: "integer", nullable: false),
+                    Icon = table.Column<string>(type: "text", nullable: true),
+                    Rating = table.Column<int>(type: "integer", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,10 +36,8 @@ namespace Quizzando.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    QuestionsId = table.Column<Guid>(type: "uuid", nullable: false),
                     CoursesId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
@@ -86,7 +90,7 @@ namespace Quizzando.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    QuestionStatement = table.Column<string>(type: "text", nullable: true),
+                    QuestionStatement = table.Column<string>(type: "text", nullable: false),
                     DisciplineId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
@@ -100,6 +104,57 @@ namespace Quizzando.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "UserDisciplineRelation",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Time = table.Column<long>(type: "bigint", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    DisciplineId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserDisciplineRelation", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserDisciplineRelation_Discipline_DisciplineId",
+                        column: x => x.DisciplineId,
+                        principalTable: "Discipline",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserDisciplineRelation_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Answer",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    QuestionId = table.Column<Guid>(type: "uuid", nullable: false),
+                    AnswerText = table.Column<string>(type: "text", nullable: false),
+                    IsCorrect = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Answer", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Answer_Question_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "Question",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answer_QuestionId",
+                table: "Answer",
+                column: "QuestionId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_CourseDiscipline_DisciplinesId",
                 table: "CourseDiscipline",
@@ -109,22 +164,38 @@ namespace Quizzando.Migrations
                 name: "IX_Question_DisciplineId",
                 table: "Question",
                 column: "DisciplineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserDisciplineRelation_DisciplineId",
+                table: "UserDisciplineRelation",
+                column: "DisciplineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserDisciplineRelation_UserId",
+                table: "UserDisciplineRelation",
+                column: "UserId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Answer");
+
+            migrationBuilder.DropTable(
                 name: "CourseDiscipline");
+
+            migrationBuilder.DropTable(
+                name: "UserDisciplineRelation");
 
             migrationBuilder.DropTable(
                 name: "Question");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Course");
 
             migrationBuilder.DropTable(
-                name: "Course");
+                name: "User");
 
             migrationBuilder.DropTable(
                 name: "Discipline");

@@ -37,17 +37,58 @@ namespace Quizzando.Migrations
                     b.ToTable("CourseDiscipline");
                 });
 
+            modelBuilder.Entity("Quizzando.Models.Answer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AnswerText")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsCorrect")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("QuestionId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Answer");
+                });
+
             modelBuilder.Entity("Quizzando.Models.Course", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("BackgroundImage")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Category")
+                        .HasColumnType("integer");
+
                     b.Property<string>("CourseName")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("DisciplineId")
-                        .HasColumnType("uuid");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -66,14 +107,8 @@ namespace Quizzando.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
                     b.Property<string>("Name")
                         .HasColumnType("text");
-
-                    b.Property<Guid>("QuestionsId")
-                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -93,6 +128,7 @@ namespace Quizzando.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("QuestionStatement")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -128,6 +164,30 @@ namespace Quizzando.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("Quizzando.Models.UserDisciplineRelation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("DisciplineId")
+                        .HasColumnType("uuid");
+
+                    b.Property<long>("Time")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DisciplineId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserDisciplineRelation");
+                });
+
             modelBuilder.Entity("CourseDiscipline", b =>
                 {
                     b.HasOne("Quizzando.Models.Course", null)
@@ -143,6 +203,17 @@ namespace Quizzando.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Quizzando.Models.Answer", b =>
+                {
+                    b.HasOne("Quizzando.Models.Question", "Question")
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Question");
+                });
+
             modelBuilder.Entity("Quizzando.Models.Question", b =>
                 {
                     b.HasOne("Quizzando.Models.Discipline", "Discipline")
@@ -154,9 +225,33 @@ namespace Quizzando.Migrations
                     b.Navigation("Discipline");
                 });
 
+            modelBuilder.Entity("Quizzando.Models.UserDisciplineRelation", b =>
+                {
+                    b.HasOne("Quizzando.Models.Discipline", "Discipline")
+                        .WithMany()
+                        .HasForeignKey("DisciplineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Quizzando.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Discipline");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Quizzando.Models.Discipline", b =>
                 {
                     b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("Quizzando.Models.Question", b =>
+                {
+                    b.Navigation("Answers");
                 });
 #pragma warning restore 612, 618
         }

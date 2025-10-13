@@ -1,6 +1,6 @@
 ﻿using Quizzando.Communication.Requests.User;
 
-namespace Quizzando.UseCases.RecoverEmail.UpdatePasswordUseCase;
+namespace Quizzando.UseCases.UserDisciplineRelations.RecoverEmail.UpdatePasswordUseCase;
 
 public interface IUpdatePasswordUseCase
 {

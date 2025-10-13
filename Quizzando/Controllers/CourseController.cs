@@ -7,7 +7,6 @@ using Quizzando.Communication.Responses.Question;
 using Quizzando.UseCases.Courses.Create;
 using Quizzando.UseCases.Courses.Delete;
 using Quizzando.UseCases.Courses.GetAll;
-using Quizzando.UseCases.Courses.GetByDisciplineId;
 using Quizzando.UseCases.Courses.GetById;
 using Quizzando.UseCases.Courses.Update;
 using Quizzando.UseCases.Questions.GetQuiz;
@@ -81,18 +80,6 @@ namespace Quizzando.Controllers
         {
             await useCase.Execute(id);
             return NoContent();
-        }
-
-        [HttpGet("discipline/{id}")]
-        [ProducesResponseType(typeof(CourseResponseJson), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetCourseByDisciplineId([FromServices] IGetCourseByDisciplineIdUseCase useCase,
-            [FromRoute] Guid disciplineId
-        )
-        {
-            var response = await useCase.Execute(disciplineId);
-
-            return Ok(response);
         }
 
         [HttpGet("quiz/{disciplineId}")]

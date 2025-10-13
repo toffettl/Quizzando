@@ -1,4 +1,4 @@
-﻿namespace Quizzando.UseCases.RecoverEmail.EmailUseCase
+﻿namespace Quizzando.UseCases.UserDisciplineRelations.RecoverEmail.SendEmailUseCase
 {
     public interface ISendEmailUseCase
     {
