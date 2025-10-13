@@ -7,8 +7,8 @@ using Quizzando.Communication.Responses;
 using Quizzando.DataAccess.Repositories.UserRepositories;
 using Quizzando.Exception;
 using Quizzando.Security.Tokens.RecoverToken;
-using Quizzando.UseCases.RecoverEmail.EmailUseCase;
-using Quizzando.UseCases.RecoverEmail.UpdatePasswordUseCase;
+using Quizzando.UseCases.UserDisciplineRelations.RecoverEmail.SendEmailUseCase;
+using Quizzando.UseCases.UserDisciplineRelations.RecoverEmail.UpdatePasswordUseCase;
 
 namespace Quizzando.Controllers
 {

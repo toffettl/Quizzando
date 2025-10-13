@@ -5,7 +5,7 @@ using MimeKit;
 using Quizzando.Settings;
 using System.Threading.Tasks;
 
-namespace Quizzando.UseCases.RecoverEmail.EmailUseCase
+namespace Quizzando.UseCases.UserDisciplineRelations.RecoverEmail.SendEmailUseCase
 {
     public class SendEmailUseCase : ISendEmailUseCase
     {

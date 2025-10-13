@@ -35,7 +35,9 @@ namespace Quizzando.DataAccess.Repositories.CourseRepositories
 
         public async Task<List<Course>> GetAllCourses()
         {
-            return await _dbContext.Course.ToListAsync();
+            return await _dbContext.Course
+                .Include(c => c.Disciplines)
+                .ToListAsync();
         }
     }
 }

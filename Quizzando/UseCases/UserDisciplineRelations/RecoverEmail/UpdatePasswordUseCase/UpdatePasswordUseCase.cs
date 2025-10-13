@@ -12,7 +12,7 @@ using Quizzando.Communication.Requests.Email;
 using Quizzando.UseCases.Users.Register;
 using FluentValidation;
 
-namespace Quizzando.UseCases.RecoverEmail.UpdatePasswordUseCase;
+namespace Quizzando.UseCases.UserDisciplineRelations.RecoverEmail.UpdatePasswordUseCase;
 
 public class UpdatePasswordUseCase : IUpdatePasswordUseCase
 {

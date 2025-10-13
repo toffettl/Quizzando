@@ -12,7 +12,11 @@ using Quizzando.DataAccess;
 namespace Quizzando.Migrations
 {
     [DbContext(typeof(QuizzandoDbContext))]
+<<<<<<<< HEAD:Quizzando/Migrations/20251008123847_FirstMigration.Designer.cs
     [Migration("20251008123847_FirstMigration")]
+========
+    [Migration("20251013111015_FirstMigration")]
+>>>>>>>> development:Quizzando/Migrations/20251013111015_FirstMigration.Designer.cs
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -24,6 +28,29 @@ namespace Quizzando.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Quizzando.Models.Answer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AnswerText")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsCorrect")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("QuestionId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Answer");
+                });
 
             modelBuilder.Entity("Quizzando.Models.Answer", b =>
                 {
@@ -69,8 +96,19 @@ namespace Quizzando.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+<<<<<<<< HEAD:Quizzando/Migrations/20251008123847_FirstMigration.Designer.cs
                     b.Property<Guid?>("DisciplineId")
                         .HasColumnType("uuid");
+========
+                    b.Property<string>("Icon")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+>>>>>>>> development:Quizzando/Migrations/20251013111015_FirstMigration.Designer.cs
 
                     b.Property<string>("Icon")
                         .HasColumnType("text");
@@ -100,11 +138,15 @@ namespace Quizzando.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+<<<<<<<< HEAD:Quizzando/Migrations/20251008123847_FirstMigration.Designer.cs
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("DisciplineName")
+========
+                    b.Property<string>("Name")
+>>>>>>>> development:Quizzando/Migrations/20251013111015_FirstMigration.Designer.cs
                         .HasColumnType("text");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -165,6 +207,33 @@ namespace Quizzando.Migrations
                 });
 
             modelBuilder.Entity("Quizzando.Models.UserDisciplineRelation", b =>
+<<<<<<<< HEAD:Quizzando/Migrations/20251008123847_FirstMigration.Designer.cs
+========
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("DisciplineId")
+                        .HasColumnType("uuid");
+
+                    b.Property<long>("Time")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DisciplineId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserDisciplineRelation");
+                });
+
+            modelBuilder.Entity("CourseDiscipline", b =>
+>>>>>>>> development:Quizzando/Migrations/20251013111015_FirstMigration.Designer.cs
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -204,6 +273,17 @@ namespace Quizzando.Migrations
                     b.HasOne("Quizzando.Models.Discipline", null)
                         .WithMany("Courses")
                         .HasForeignKey("DisciplineId");
+                });
+
+            modelBuilder.Entity("Quizzando.Models.Answer", b =>
+                {
+                    b.HasOne("Quizzando.Models.Question", "Question")
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("Quizzando.Models.Question", b =>
