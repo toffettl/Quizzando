@@ -105,5 +105,17 @@ namespace Quizzando.Controllers
             return Ok(response);
         }
 
+
+        [HttpPatch("{id}/score/{newScore}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UpdateScore(
+            [FromServices] IUpdateUserScoreUseCase useCase,
+            [FromRoute] Guid id,
+            [FromRoute] int newScore)
+        {
+            await useCase.Execute(id, newScore);
+            return NoContent();
+        }
     }
 }
