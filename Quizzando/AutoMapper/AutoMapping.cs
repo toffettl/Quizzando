@@ -6,7 +6,7 @@ using Quizzando.Communication.Requests.User;
 using Quizzando.Communication.Requests.UserDiscipline;
 using Quizzando.Communication.Responses.Answer;
 using Quizzando.Communication.Responses.Course;
-using Quizzando.Communication.Responses.Discipline;
+using Quizzando.Communication.Responses.Course.Discipline;
 using Quizzando.Communication.Responses.Question;
 using Quizzando.Communication.Responses.User;
 using Quizzando.Communication.Responses.UserDiscipline;
@@ -37,13 +37,13 @@ namespace Quizzando.AutoMapper
         {
             CreateMap<User, UserRegisterResponse>();
             CreateMap<User, UserGetByIdResponse>();
-            CreateMap<Course, CourseResponseJson>()
-                .ForMember(dest => dest.Disciplines, opt => opt.MapFrom(c => c.Disciplines.Select(d => d.Id).ToList()));
+            CreateMap<Course, CourseResponseJson>();
+            CreateMap<Course, GetCourseByIdResponse>();
             CreateMap<Course, GetAllCoursesResponse>();
+            CreateMap<Course, UpdateCourseResponse>();
             CreateMap<Discipline, DisciplineResponse>();
             CreateMap<UserDisciplineRelation, UserDisciplineRelationResponse>();
             CreateMap<Question, QuestionResponse>();
-            CreateMap<Answer, ResponseAnswerJson>();
         }
 
 
