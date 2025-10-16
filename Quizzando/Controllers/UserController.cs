@@ -44,7 +44,7 @@ namespace Quizzando.Controllers
         }
 
         [HttpGet("ranking")]
-        [ProducesResponseType(typeof(PagedResult<UserGetByRankingResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<UserGetByRankingResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> GetByRanking(
             [FromServices] IGetUsersByRankingUseCase useCase,

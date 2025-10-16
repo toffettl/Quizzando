@@ -45,6 +45,7 @@ namespace Quizzando.AutoMapper
             CreateMap<Course, CourseResponseJson>()
                 .ForMember(dest => dest.Disciplines, opt => opt.MapFrom(src => src.Disciplines.Select(d => d.Id)));
             CreateMap<Answer, ResponseAnswerJson>();
+            CreateMap<User, UserGetByRankingResponse>();
         }
 
 
